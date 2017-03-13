@@ -33,8 +33,8 @@ export class PieViewComponent implements OnInit, OnChanges {
 
   public pie_ChartOptions  = {
     title: 'My Daily Activities',
-    width: 400,
-    height: 400
+    width: '80%',
+    height: '80%'
   };
 
 }

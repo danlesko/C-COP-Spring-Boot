@@ -1,18 +1,20 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title pull-left">
-      With short text it works great!
+      Histogram View
     </h3>
 
     <button class="btn btn-primary pull-right">New</button>
     <div class="clearfix"></div>
   </div>
   <div class="panel-body" style="height: 40vh;overflow-y: scroll;">
-    StartDate: <br />
-    Month: {{startDate.month}} Day: {{startDate.day}} Year: {{startDate.year}}
-    <br />
-    EndDate: <br />
-    Month: {{endDate.month}} Day: {{endDate.day}} Year: {{endDate.year}}
+    <!--StartDate: <br />-->
+    <!--Month: {{startDate.month}} Day: {{startDate.day}} Year: {{startDate.year}}-->
+    <!--<br />-->
+    <!--EndDate: <br />-->
+    <!--Month: {{endDate.month}} Day: {{endDate.day}} Year: {{endDate.year}}-->
+
+    <div id="histogram_chart" [chartData]="histogram_ChartData" [chartOptions]="histogram_ChartOptions" chartType="Histogram" GoogleChart></div>
   </div>
 </div>
 

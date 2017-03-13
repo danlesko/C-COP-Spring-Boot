@@ -74,7 +74,14 @@
     <div class="col-md-4 dataView">
       <app-pie-view [startDate]="startDate" [endDate]="endDate"></app-pie-view>
     </div>
-    <div class="col-md-6 dataView">
+    <div class="col-md-8 dataView">
+      <app-crime-table-view [startDate]="startDate" [endDate]="endDate" [startTime]="startTime"></app-crime-table-view>
+    </div>
+    <div class="col-md-4 dataView">
+      <app-arrest-table-view [startDate]="startDate" [endDate]="endDate"></app-arrest-table-view>
+    </div>
+    <div class="col-md-12 dataView">
         <app-histogram-view [startDate]="startDate" [endDate]="endDate"></app-histogram-view>
     </div>
+
 </div>
