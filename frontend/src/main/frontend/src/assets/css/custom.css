@@ -1,0 +1,72 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px;
+    /* bottom = footer height */
+}
+
+.custom-bullet li:before
+{
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: #CCCCCC;
+}
+
+.imgcaption {
+	display:block;
+    margin:auto;
+    text-align: center !important;
+}
+
+a.pills{
+	color:black;
+}
+
+.hidden { display: none; }
+
+.listFont{
+    font-size: 1.5em !important;
+}
+
+.pFont{
+    font-size: 1.25em !important;
+}
+
+.tFont{
+    font-size: 1.125em !important;
+}
+
+.hFont{
+    font-size: 2em !important;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px !important;
+    width: 100%;
+    overflow:hidden;
+}
+
+.carousel-text{
+    font-size: 3em;
+}
+
+.foottext{
+    padding-top: 15px !important;
+}
+
+@media screen and (max-width: 480px) {
+    .carousel-text {
+        font-size: 1em;
+    }
+}
