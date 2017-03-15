@@ -32,8 +32,9 @@ export class PieViewComponent implements OnInit, OnChanges {
     ['Sleep',    7] ];
 
   public pie_ChartOptions  = {
-    title: 'My Daily Activities',
-    width: 400,
+    'title': 'Crimes',
+    chartArea: {'width': '80%', 'height': '80%'},
+    width: 500,
     height: 400
   };
 

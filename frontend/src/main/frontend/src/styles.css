@@ -2,4 +2,12 @@
 
 body{
   background-color: #f7f7f7 !important;
+  margin: 0 0 100px;
+  /* bottom = footer height */
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+

@@ -21,7 +21,6 @@
       "styles": [
         "styles.css",
         "assets/css/bootstrapSwatch.min.css",
-        "assets/css/custom.css",
         "assets/fa/css/font-awesome.min.css"
       ],
       "scripts": [
