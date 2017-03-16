@@ -1,16 +1,21 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import { DataFetchService } from '../../global/data-fetch/data-fetch.service';
 
 @Component({
   selector: 'app-crime-table-view',
   templateUrl: './crime-table-view.component.html',
-  styleUrls: ['./crime-table-view.component.css']
+  styleUrls: ['./crime-table-view.component.css'],
+  providers: [DataFetchService]
 })
 export class CrimeTableViewComponent implements OnInit, OnChanges {
 
-  constructor() { }
+  constructor(private dataFetchService : DataFetchService) { }
 
   ngOnInit() {
+    this.fetchCrime();
   }
+
+  changeLog: string[] = [];
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}){
     let log: string[] = [];
@@ -31,6 +36,20 @@ export class CrimeTableViewComponent implements OnInit, OnChanges {
   @Input() endDate: any;
   @Input() startTime: any;
 
-  changeLog: string[] = [];
+
+  crimeData : any;
+
+  fetchCrime(): void {
+    this.dataFetchService
+      .fetchCrime()
+      .subscribe(response => {
+        this.crimeData = response;
+        console.log("Crime Data: " + JSON.stringify(response));
+      });
+  }
+
+
+
+
 
 }

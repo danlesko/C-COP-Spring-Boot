@@ -11,26 +11,20 @@
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Narrative</th>
+        <th>Place</th>
+
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
+      <tr *ngFor="let crime of crimeData">
+        <td>{{crime.start_date}}</td>
+        <td>{{crime.location}}</td>
+        <td>{{crime.narrative}}</td>
+        <td>{{crime.place}}</td>
+
       </tr>
       </tbody>
     </table>

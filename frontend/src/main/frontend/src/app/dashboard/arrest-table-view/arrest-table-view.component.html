@@ -1,4 +1,4 @@
-<div class="panel panel-warning panel-default">
+<div class="panel panel-primary panel-default">
   <div class="panel-heading">
     <div class="pull-left" style="font-size: 1.5em;">
       Arrest Data View
@@ -11,26 +11,16 @@
     <table class="table table-bordered">
       <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>Data</th>
+        <th>Name</th>
+        <th>Offense</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
+      <tr *ngFor="let arrest of arrestData">
+        <td>{{arrest.arrest_date}}</td>
+        <td>{{arrest.first_name}} {{arrest.last_name}}</td>
+        <td>{{arrest.offense}}</td>
       </tr>
       </tbody>
     </table>

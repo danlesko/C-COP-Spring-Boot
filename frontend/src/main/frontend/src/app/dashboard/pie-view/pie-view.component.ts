@@ -24,12 +24,11 @@ export class PieViewComponent implements OnInit, OnChanges {
   @Input() endDate: any;
 
   public pie_ChartData = [
-    ['Task', 'Hours per Day'],
-    ['Work',     11],
-    ['Eat',      2],
-    ['Commute',  2],
-    ['Watch TV', 2],
-    ['Sleep',    7] ];
+    ['Crime vs Arrests', 'Occurrences'],
+    ['Arrests',      20],
+    ['Crime',     80]
+
+     ];
 
   public pie_ChartOptions  = {
     'title': 'Crimes',

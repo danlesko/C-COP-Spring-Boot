@@ -1,15 +1,18 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import { DataFetchService } from "../../global/data-fetch/data-fetch.service";
 
 @Component({
   selector: 'app-arrest-table-view',
   templateUrl: './arrest-table-view.component.html',
-  styleUrls: ['./arrest-table-view.component.css']
+  styleUrls: ['./arrest-table-view.component.css'],
+  providers: [DataFetchService]
 })
 export class ArrestTableViewComponent implements OnInit, OnChanges {
 
-  constructor() { }
+  constructor(private dataFetchService: DataFetchService) { }
 
   ngOnInit() {
+    this.fetchArrests();
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}){
@@ -32,5 +35,16 @@ export class ArrestTableViewComponent implements OnInit, OnChanges {
   @Input() startTime: any;
 
   changeLog: string[] = [];
+
+  arrestData : any;
+
+  fetchArrests(): void {
+    this.dataFetchService
+      .fetchArrests()
+      .subscribe(response => {
+        this.arrestData = response;
+        console.log("Arrest Data: " + JSON.stringify(response));
+      });
+  }
 
 }

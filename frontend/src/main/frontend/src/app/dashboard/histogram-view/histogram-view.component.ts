@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import {GoogleChart} from 'angular2-google-chart/directives/angular2-google-chart.directive';
 
 @Component({
   selector: 'app-histogram-view',
@@ -23,17 +24,16 @@ export class HistogramViewComponent implements OnInit, OnChanges {
   @Input() endDate: any;
 
   public histogram_ChartData = [
-    ['Task', 'Hours per Day'],
-    ['Work',     11],
-    ['Eat',      2],
-    ['Commute',  2],
-    ['Watch TV', 2],
-    ['Sleep',    7] ];
+    ['Date', 'Arrests', 'Crimes'],
+    ['Monday', 20, 80],
+    ['Tuesday', 10, 50],
+    ['Wednesday', 5, 35],
+    ['Thursday', 15, 75],
+    ['Friday', 25, 100] ];
 
   public histogram_ChartOptions  = {
-    title: 'My Daily Activities',
-    width: '80%',
-    height: '80%'
+    'title': 'Crimes Vs. Arrests',
+    'isStacked': true
   };
 
 }

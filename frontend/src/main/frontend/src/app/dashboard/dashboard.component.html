@@ -63,9 +63,6 @@
             <my-date-range-picker [options]="myDateRangePickerOptions"
                                   (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
                 </div>
-              <div class="col-md-3">
-                Empty Space
-              </div>
                 <div class="col-md-3">
                     Start Time: <br />
                     <timepicker [(ngModel)]="startTime"></timepicker>
@@ -74,7 +71,9 @@
                     End Time: <br />
                     <timepicker [(ngModel)]="endTime"></timepicker>
                 </div>
+                <div class="col-md-3">
 
+                </div>
             </div>
         </div>
         <div class="col-md-1"></div>
