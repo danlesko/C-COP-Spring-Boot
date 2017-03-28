@@ -58,9 +58,9 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="row">
+              <h5>Global Filters</h5>
                 <div class="col-md-3">
-            <h5>Select Date Range</h5>
-            <my-date-range-picker [options]="myDateRangePickerOptions"
+                <my-date-range-picker [options]="myDateRangePickerOptions"
                                   (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
                 </div>
                 <div class="col-md-3">
@@ -72,12 +72,91 @@
                     <timepicker [(ngModel)]="endTime"></timepicker>
                 </div>
                 <div class="col-md-3">
-
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Narrative / Offense
+                      <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Thing 1</a></li>
+                      <li><a href="#">Thing 2</a></li>
+                      <li><a href="#">Thing 3</a></li>
+                    </ul>
+                  </div>
+                  <br />
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">City
+                      <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Thing 1</a></li>
+                      <li><a href="#">Thing 2</a></li>
+                      <li><a href="#">Thing 3</a></li>
+                    </ul>
+                  </div>
+                  <br />
+                  <button class="btn btn-danger dropdown-toggle" type="button" >Submit</button>
                 </div>
             </div>
         </div>
         <div class="col-md-1"></div>
     </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <h5>Crime Data Filters</h5>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="focusedInput1">Location</label>
+              <input class="form-control" id="focusedInput1" type="text" >
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="focusedInput2">Narrative</label>
+              <input class="form-control" id="focusedInput2" type="text" >
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="focusedInput3">Place</label>
+              <input class="form-control" id="focusedInput3" type="text" >
+            </div>
+          </div>
+          <div class="col-md-3">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <h5>Arrest Data Filters</h5>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="focusedInput4">Name</label>
+              <input class="form-control" id="focusedInput4" type="text" >
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="focusedInput5">Offense</label>
+              <input class="form-control" id="focusedInput5" type="text" >
+            </div>
+          </div>
+          <div class="col-md-3">
+
+          </div>
+          <div class="col-md-3">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <br />
+    <br />
 </div>
 </div>
 
@@ -88,14 +167,15 @@
     <div class="col-md-4">
       <app-pie-view [startDate]="startDate" [endDate]="endDate"></app-pie-view>
     </div>
+    <div class="col-md-12">
+      <app-histogram-view [startDate]="startDate" [endDate]="endDate"></app-histogram-view>
+    </div>
     <div class="col-md-8">
       <app-crime-table-view [startDate]="startDate" [endDate]="endDate" [startTime]="startTime"></app-crime-table-view>
     </div>
     <div class="col-md-4">
       <app-arrest-table-view [startDate]="startDate" [endDate]="endDate"></app-arrest-table-view>
     </div>
-    <div class="col-md-12">
-        <app-histogram-view [startDate]="startDate" [endDate]="endDate"></app-histogram-view>
-    </div>
+
 
 </div>

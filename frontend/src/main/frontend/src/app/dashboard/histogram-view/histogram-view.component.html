@@ -4,7 +4,7 @@
       Histogram View
     </div>
 
-    <button class="btn btn-default pull-right">Max</button>
+    <button class="btn btn-default pull-right" (click)="lgHistogramModal.show()" >Max</button>
     <div class="clearfix"></div>
   </div>
   <div class="panel-body" style="height: 40vh;overflow-y: scroll;">
@@ -18,3 +18,38 @@
   </div>
 </div>
 
+<div bsModal #lgHistogramModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Large Histogram View</h4>
+        <button type="button" class="close pull-right" (click)="lgHistogramModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <!--<h3 class="panel-title pull-left">-->
+            <!--With short text it works great!-->
+            <!--</h3>-->
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="panel-body" style="height: 100vh;overflow-y: scroll;">
+            <!--<strong>StartDate</strong> <br />-->
+            <!--Month: {{startDate.month}} Day: {{startDate.day}} Year: {{startDate.year}}-->
+            <!--<br />-->
+            <!--<strong>EndDate:</strong> <br />-->
+            <!--Month: {{endDate.month}} Day: {{endDate.day}} Year: {{endDate.year}}-->
+            <!--<br />-->
+            <!--<strong>Time:</strong> <br /> {{startTime}} <br />-->
+            <div style="width: 100%; height: 100%">
+              <div id="histogram_chartLG" [chartData]="histogram_ChartData" [chartOptions]="histogram_ChartOptionsLG" chartType="ColumnChart" GoogleChart></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

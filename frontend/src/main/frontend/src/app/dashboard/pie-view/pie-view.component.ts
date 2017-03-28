@@ -37,4 +37,10 @@ export class PieViewComponent implements OnInit, OnChanges {
     height: 400
   };
 
+  public pie_ChartOptionsLG  = {
+    'title': 'Crimes',
+    chartArea: {'width': '100%', 'height': '100%'},
+    width: 1000,
+    height: 1000
+  };
 }
