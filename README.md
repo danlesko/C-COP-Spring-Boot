@@ -20,8 +20,10 @@ Follow these directions to start:
    1. `npm install -g @angular/cli@1.0.0-rc.1`
 4. Install Typings
    1. `npm install -g typings`
-5. Install Angular2-Google-Chart
-   1. `npm install angular2-google-chart`
+5. Inside of the frontend/src/main/frontend directory you must Install Angular2-Google-Chart
+   1. `npm install --save-dev angular2-google-chart`
+   
+   It will give some warnings about not all dependencies being met, ideally we will update the whole project to Angular4 before the end of April 2017.
 
 Once this is done, you can run:  
 `npm install`  
