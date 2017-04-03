@@ -1,4 +1,4 @@
-package com.trinityinnovations;
+package com.trinityinnovations.ApplicationStartup;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

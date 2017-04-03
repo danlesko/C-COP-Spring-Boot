@@ -1,3 +1,5 @@
+package com.trinityinnovations.PopulateMySQL;
+
 import java.io.IOException;
 import java.sql.*;
 import java.text.ParsePosition;
@@ -440,7 +442,8 @@ public class HttpGet {
 
         try {
             // Connect to the database
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
+            // Generally database runs on port 3306
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
 
             // SQL to talk to database
             String sql = "insert into crime (incident_id, case_number, date, incident_type, narrative," +
