@@ -74,10 +74,7 @@ public class HttpGet {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-        // Convert from String to Java Date
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-
+    public static String query(String url) {
         //create a singular HttpClient object
         HttpClient client = new HttpClient();
 
@@ -85,7 +82,6 @@ public class HttpGet {
         client.getHttpConnectionManager().
                 getParams().setConnectionTimeout(5000);
 
-        String url = "https://data.montgomerycountymd.gov/resource/yc8a-5df8.csv?$limit=200000";
         HttpMethod method = null;
 
         //create a method object
@@ -138,7 +134,19 @@ public class HttpGet {
         //clean up the connection resources
         method.releaseConnection();
 
-        class Entry {
+        return responseBody;
+    }
+
+    public static void main(String[] args) {
+        // Convert from String to Java Date
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+
+        // Holds the data received from the query
+        String responseBody;
+
+        responseBody = query("https://data.montgomerycountymd.gov/resource/yc8a-5df8.csv?$limit=200000");
+
+        class CrimeEntry {
             String incident_id;
             String case_number;
             String date;
@@ -262,7 +270,7 @@ public class HttpGet {
 
             public void setZip_code(String zip_code) {
                 if (zip_code.length() > 0) {
-                    this.zip_code = Integer.valueOf(zip_code);;
+                    this.zip_code = Integer.valueOf(zip_code);
                 }
             }
 
@@ -429,9 +437,10 @@ public class HttpGet {
 
         Connection conn = null;
         PreparedStatement pstmt = null;
+
         try {
             // Connect to the database
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/crime?" + "user=root&password=password&serverTimezone=US/Eastern");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
 
             // SQL to talk to database
             String sql = "insert into crime (incident_id, case_number, date, incident_type, narrative," +
@@ -450,9 +459,8 @@ public class HttpGet {
 
         try {
             CSVParser parser = CSVParser.parse(responseBody, CSVFormat.EXCEL);
-            Entry entry = new Entry();
+            CrimeEntry entry = new CrimeEntry();
             boolean firstEntry = true;
-            boolean secondEntry = false;
             for (CSVRecord csvRecord : parser) {
                 if (!firstEntry) {
                     Iterator<String> iterator = csvRecord.iterator();
@@ -515,6 +523,171 @@ public class HttpGet {
                         pstmt.setString(param++, entry.getGeolocation_zip());
                         pstmt.setString(param++, entry.getGeolocation_state());
 
+                        pstmt.executeUpdate();
+                    } catch (SQLException e) {
+                        System.out.println(e);
+                    }
+                }
+                firstEntry = false;
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        class ArrestEntry {
+            String last_name;
+            String first_name;
+            String middle_name;
+            int age;
+            String street;
+            String city;
+            String state;
+            String arrest_date;
+            String offense;
+
+            public String getLast_name() {
+                return last_name;
+            }
+
+            public void setLast_name(String last_name) {
+                if (last_name.length() > 0) {
+                    this.last_name = last_name;
+                }
+            }
+
+            public String getFirst_name() {
+                return first_name;
+            }
+
+            public void setFirst_name(String first_name) {
+                if (first_name.length() > 0) {
+                    this.first_name = first_name;
+                }
+            }
+
+            public String getMiddle_name() {
+                return middle_name;
+            }
+
+            public void setMiddle_name(String middle_name) {
+                if (middle_name.length() > 0) {
+                    this.middle_name = middle_name;
+                }
+            }
+
+            public int getAge() {
+                return age;
+            }
+
+            public void setAge(String age) {
+                if (age.length() > 0) {
+                    this.age = Integer.valueOf(age);
+                }
+            }
+
+            public String getStreet() {
+                return street;
+            }
+
+            public void setStreet(String street) {
+                if (street.length() > 0) {
+                    this.street = street;
+                }
+            }
+
+            public String getCity() {
+                return city;
+            }
+
+            public void setCity(String city) {
+                if (city.length() > 0) {
+                    this.city = city;
+                }
+            }
+
+            public String getState() {
+                return state;
+            }
+
+            public void setState(String state) {
+                if (state.length() > 0) {
+                    this.state = state;
+                }
+            }
+
+            public Timestamp getArrest_date() {
+                Timestamp myDate = new Timestamp(sdf.parse(arrest_date, new ParsePosition(0)).getTime());
+                return myDate;
+            }
+
+            public void setArrest_date(String arrest_date) {
+                if (arrest_date.length() > 0) {
+                    this.arrest_date = arrest_date;
+                }
+            }
+
+            public String getOffense() {
+                return offense;
+            }
+
+            public void setOffense(String offense) {
+                if (offense.length() > 0) {
+                    this.offense = offense;
+                }
+            }
+        }
+
+        responseBody = query("https://data.montgomerycountymd.gov/resource/mavv-8s3f.csv?$limit=10000");
+
+        try {
+            // Connect to the database
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
+
+            // SQL to talk to database
+            String sql = "insert into arrest (last_name, first_name, middle_name, age, street, city, state, arrest_date, offense)" +
+                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            // Allows you to use the SQL
+            pstmt = conn.prepareStatement(sql);
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+
+        try {
+            CSVParser parser = CSVParser.parse(responseBody, CSVFormat.EXCEL);
+            ArrestEntry entry = new ArrestEntry();
+            boolean firstEntry = true;
+            for (CSVRecord csvRecord : parser) {
+                if (!firstEntry) {
+                    Iterator<String> iterator = csvRecord.iterator();
+                    if (csvRecord.size() > 9) {
+                        for (int i = 0; i < 4; i++) {
+                            iterator.next(); // Overlook computed regions (checksums)
+                        }
+                    }
+                    entry.setAge(iterator.next());
+                    entry.setArrest_date(iterator.next());
+                    entry.setCity(iterator.next());
+                    entry.setFirst_name(iterator.next());
+                    entry.setLast_name(iterator.next());
+                    entry.setMiddle_name(iterator.next());
+                    entry.setOffense(iterator.next());
+                    entry.setState(iterator.next());
+                    entry.setStreet(iterator.next());
+
+                    try {
+                        int param = 1;
+                        pstmt.setString(param++, entry.getLast_name());
+                        pstmt.setString(param++, entry.getFirst_name());
+                        pstmt.setString(param++, entry.getMiddle_name());
+                        pstmt.setInt(param++, entry.getAge());
+                        pstmt.setString(param++, entry.getStreet());
+                        pstmt.setString(param++, entry.getCity());
+                        pstmt.setString(param++, entry.getState());
+                        pstmt.setTimestamp(param++, entry.getArrest_date());
+                        pstmt.setString(param++, entry.getOffense());
                         pstmt.executeUpdate();
                     } catch (SQLException e) {
                         System.out.println(e);
