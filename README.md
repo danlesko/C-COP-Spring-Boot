@@ -17,7 +17,7 @@ Follow these directions to start:
 1. Install [NVM](https://github.com/creationix/nvm#install-script) or Node (This will include NPM)
 2. Optionally install Maven, or run the project from inside Eclipse (You will need your own Tomcat Server) or IntelliJ
 3. Install the Angular CLI
-   1. `npm install -g @angular/cli@latest`
+   1. `npm install -g @angular/cli@1.0.0-rc.1`
 4. Install Typings
    1. `npm install -g typings`
 5. Install Angular2-Google-Chart
