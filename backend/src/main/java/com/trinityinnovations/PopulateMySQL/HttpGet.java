@@ -465,7 +465,7 @@ public class HttpGetCrime {
         try {
             // Connect to the database
             // Generally database runs on port 3306
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ccop?" + "user=root&password=password&serverTimezone=US/Eastern");
 
             // SQL to talk to database
             String sql = "insert into crime (incident_id, case_number, date, incident_type, narrative," +

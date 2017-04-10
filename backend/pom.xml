@@ -27,7 +27,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -62,7 +65,24 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>6.0.6</version>
 		</dependency>
-
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate5</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.javaetmoi.core</groupId>
+			<artifactId>javaetmoi-hibernate5-hydrate</artifactId>
+			<version>2.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
