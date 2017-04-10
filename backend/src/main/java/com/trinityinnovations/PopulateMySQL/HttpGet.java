@@ -147,7 +147,7 @@ public class HttpGet {
         String date = "";
         try {
             // Connect to the database
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
 
             // SQL to talk to database
             String sql = "select * from crime where date in (select max(date) from crime)";
@@ -155,9 +155,13 @@ public class HttpGet {
             // Allows you to use the SQL
             stmt = conn.createStatement();
             ResultSet results = stmt.executeQuery(sql);
-            results.next();
-            date = results.getString("date");
-            date = date.substring(0, 10) + "T" + date.substring(11) + ".000";
+            if (results.next()) {
+                date = results.getString("date");
+                date = date.substring(0, 10) + "T" + date.substring(11) + ".000";
+            }
+            else {
+                date = "0";
+            }
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
@@ -168,8 +172,13 @@ public class HttpGet {
         // Holds the data received from the query
         String responseBody;
 
-        responseBody = query("https://data.montgomerycountymd.gov/resource/yc8a-5df8.csv?$where=date%3E'"
-        + date + "'");
+        if (!date.equalsIgnoreCase("0")) {
+            responseBody = query("https://data.montgomerycountymd.gov/resource/yc8a-5df8.csv?$where=date%3E'"
+                    + date + "'");
+        }
+        else {
+            responseBody = query("https://data.montgomerycountymd.gov/resource/yc8a-5df8.csv?$limit=200000");
+        }
 
         class CrimeEntry {
             String incident_id;
@@ -664,7 +673,7 @@ public class HttpGet {
 
         try {
             // Connect to the database
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
 
             // SQL to talk to database
             String sql = "select * from arrest where arrest_date in (select max(arrest_date) from arrest)";
@@ -672,17 +681,26 @@ public class HttpGet {
             // Allows you to use the SQL
             stmt = conn.createStatement();
             ResultSet results = stmt.executeQuery(sql);
-            results.next();
-            date = results.getString("arrest_date");
-            date = date.substring(0, 10) + "T" + date.substring(11) + ".000";
+            if (results.next()) {
+                date = results.getString("arrest_date");
+                date = date.substring(0, 10) + "T" + date.substring(11) + ".000";
+            }
+            else {
+                date = "0";
+            }
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         }
 
-        responseBody = query("https://data.montgomerycountymd.gov/resource/mavv-8s3f.csv?$where=arrest_date%3E'"
-                + date + "'");
+        if (!date.equalsIgnoreCase("0")) {
+            responseBody = query("https://data.montgomerycountymd.gov/resource/mavv-8s3f.csv?$where=arrest_date%3E'"
+                    + date + "'");
+        }
+        else {
+            responseBody = query("https://data.montgomerycountymd.gov/resource/mavv-8s3f.csv?$limit=200000");
+        }
 
         try {
             // Connect to the database
