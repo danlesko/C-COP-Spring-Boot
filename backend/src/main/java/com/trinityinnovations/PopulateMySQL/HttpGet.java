@@ -21,7 +21,7 @@ import org.apache.commons.httpclient.methods.GetMethod;
 /**
  * Created by Rob on 4/2/17.
  */
-public class HttpGetCrime {
+public class HttpGet {
 
 /*
  * $HeadURL$
