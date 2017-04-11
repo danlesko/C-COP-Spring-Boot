@@ -29,6 +29,6 @@ public class ArrestsController {
     @GetMapping(path = "/{start_date}/{end_date}", produces = "application/json")
     @ResponseBody
     public List<Arrests> getArrestsInInterval(@PathVariable String start_date, @PathVariable String end_date) {
-        return arrestsService.getCrimesInInterval(start_date, end_date);
+        return arrestsService.getArrestsInInterval(start_date, end_date);
     }
 }

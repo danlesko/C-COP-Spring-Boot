@@ -147,7 +147,7 @@ public class HttpGet {
         String date = "";
         try {
             // Connect to the database
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CCOP?" + "user=root&password=password&serverTimezone=US/Eastern");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ccop?" + "user=root&password=password&serverTimezone=US/Eastern");
 
             // SQL to talk to database
             String sql = "select * from crime where date in (select max(date) from crime)";
