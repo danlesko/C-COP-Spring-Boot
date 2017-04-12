@@ -8,6 +8,8 @@ import { TimepickerModule } from 'ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { GoogleChart } from 'angular2-google-chart/directives/angular2-google-chart.directive';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -38,7 +40,7 @@ import { ArrestTableViewComponent } from './dashboard/arrest-table-view/arrest-t
     ModalModule.forRoot(),
     MyDateRangePickerModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

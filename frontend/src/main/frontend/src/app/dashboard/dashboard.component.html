@@ -60,8 +60,8 @@
             <div class="row">
               <h5>Global Filters</h5>
                 <div class="col-md-3">
-                <my-date-range-picker [options]="myDateRangePickerOptions"
-                                  (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+                <my-date-range-picker name="mydaterange" [options]="myDateRangePickerOptions" [(ngModel)]="model" required
+                                  ></my-date-range-picker> <!-- (dateRangeChanged)="onDateRangeChanged($event)" -->
                 </div>
                 <div class="col-md-3">
                     Start Time: <br />
@@ -92,7 +92,7 @@
                     </ul>
                   </div>
                   <br />
-                  <button class="btn btn-danger dropdown-toggle" type="button" >Submit</button>
+                  <button class="btn btn-danger" type="button" (click)="getArrestsInInterval(); getCrimesInInterval();">Apply Global Filters</button>
                 </div>
             </div>
         </div>
@@ -171,10 +171,10 @@
       <app-histogram-view [startDate]="startDate" [endDate]="endDate"></app-histogram-view>
     </div>
     <div class="col-md-8">
-      <app-crime-table-view [startDate]="startDate" [endDate]="endDate" [startTime]="startTime"></app-crime-table-view>
+      <app-crime-table-view  [crimeData]="crimeData"></app-crime-table-view>
     </div>
     <div class="col-md-4">
-      <app-arrest-table-view [startDate]="startDate" [endDate]="endDate"></app-arrest-table-view>
+      <app-arrest-table-view [arrestsData]="arrestsData"></app-arrest-table-view>
     </div>
 </div>
 

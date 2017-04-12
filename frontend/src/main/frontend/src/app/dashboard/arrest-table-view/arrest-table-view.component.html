@@ -17,10 +17,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let arrest of arrestData">
-        <td>{{arrest.arrest_date}}</td>
-        <td>{{arrest.first_name}} {{arrest.last_name}}</td>
-        <td>{{arrest.offense}}</td>
+      <tr *ngFor="let arrest of arrestsData">
+        <td>{{arrest?.arrest_date}}</td>
+        <td>{{arrest?.first_name}} {{arrest?.last_name}}</td>
+        <td>{{arrest?.offense}}</td>
       </tr>
       </tbody>
     </table>
@@ -34,7 +34,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title pull-left">Large Arrest Table View</h4>
-        <button type="button" class="close pull-right" (click)="lgArrestModal.hide()" aria-label="Close">
+        <button type="button" class="close pull-right" (click)="lgArrestModal.hide();" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>

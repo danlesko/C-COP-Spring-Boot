@@ -1,6 +1,7 @@
 package com.trinityinnovations.MoCoData;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.*;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -17,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 @Entity
 @Table(name = "crime")
-public class Crime {
+public class Crime implements Serializable {
     @Id
     @Column(name = "incident_id", nullable = false)
     private String incident_id;

@@ -12,7 +12,7 @@ export class ArrestTableViewComponent implements OnInit, OnChanges {
   constructor(private dataFetchService: DataFetchService) { }
 
   ngOnInit() {
-    this.fetchArrests();
+    //this.fetchArrests();
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}){
@@ -28,23 +28,29 @@ export class ArrestTableViewComponent implements OnInit, OnChanges {
       }
     }
     this.changeLog.push(log.join(', '));
+    console.log(JSON.stringify(this.arrestsData));
   }
 
   @Input() startDate: any;
   @Input() endDate: any;
   @Input() startTime: any;
+  @Input() arrestsData: any;
 
   changeLog: string[] = [];
 
-  arrestData : any;
+  //arrestData : any;
 
   fetchArrests(): void {
     this.dataFetchService
       .fetchArrests()
       .subscribe(response => {
-        this.arrestData = response;
-        console.log("Arrest Data: " + JSON.stringify(response));
+        this.arrestsData = response;
+        //console.log("Arrest Data: " + JSON.stringify(response));
       });
+  }
+
+  showData(): void{
+    console.log(JSON.stringify(this.arrestsData));
   }
 
 }

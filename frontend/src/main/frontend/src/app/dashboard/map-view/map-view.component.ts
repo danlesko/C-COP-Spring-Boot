@@ -30,6 +30,7 @@ export class MapViewComponent implements OnInit, OnChanges {
       }
     }
     this.changeLog.push(log.join(', '));
+
   }
 
   @Input() startDate: any;

@@ -31,7 +31,7 @@ public class ArrestsDao {
 
         List<Arrests> arrests;
         arrests = entityManager.createNativeQuery(
-                "SELECT * " + "FROM arrest WHERE date BETWEEN " + start_date + " AND " + end_date, Arrests.class).getResultList();
+                "SELECT * " + "FROM arrest WHERE arrest_date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'", Arrests.class).getResultList();
         return arrests;
     }
 }
