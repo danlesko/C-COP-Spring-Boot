@@ -16,13 +16,26 @@
     <!--<br />-->
     <!--<strong>Time:</strong> <br /> {{startTime}} <br />-->
 
-    <iframe
-            width="100%"
-            height="100%"
-            frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvXhRiDYR_eGEjSCC0PolfUROkfiwOyvo
-    &q=Montgomery+County,MD" allowfullscreen>
-    </iframe>
+    <!--<iframe-->
+            <!--width="100%"-->
+            <!--height="100%"-->
+            <!--frameborder="0" style="border:0"-->
+            <!--src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvXhRiDYR_eGEjSCC0PolfUROkfiwOyvo-->
+    <!--&q=Montgomery+County,MD" allowfullscreen>-->
+    <!--</iframe>-->
+    <!--<div *ngFor="let crime of crimeData">-->
+      <!--<td>{{arrest.arrest_date}}</td>-->
+      <!--<td>{{arrest.first_name}} {{arrest.last_name}}</td>-->
+      <!--<td>{{arrest.offense}}</td>-->
+    <!--</div>-->
+    <!--<sebm-google-map [latitude]="lat" [longitude]="lng">-->
+      <!--<sebm-google-map-marker [latitude]="39.154743" [longitude]="-77.240515"></sebm-google-map-marker>-->
+      <!--<sebm-google-map-marker *ngFor="let crime of crimeData" [latitude]="convertStringToNumber(crime.latitude)" [longitude]="convertStringToNumber(crime.longitude)"></sebm-google-map-marker>-->
+    <!--</sebm-google-map>-->
+    <sebm-google-map [latitude]="39.154743" [longitude]="-77.240515" [zoom]="zoom">
+      <sebm-google-map-marker *ngFor="let crime of crimeData" [latitude]="lat" [longitude]="lng" [label]="'M'">
+      </sebm-google-map-marker>
+    </sebm-google-map>
   </div>
 </div>
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import { DataFetchService } from '../../global/data-fetch/data-fetch.service';
 //import {DatePickerService} from '../../global/date-picker/date-picker.service';
 
 @Component({
@@ -7,14 +8,20 @@ import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core
   styleUrls: ['./map-view.component.css']
 
 })
+
 export class MapViewComponent implements OnInit, OnChanges {
 
-  constructor() {
+  @Input() startDate: any;
+  @Input() endDate: any;
+  @Input() startTime: any;
+  @Input() crimeData: any;
+
+  constructor(private dataFetchService : DataFetchService) {
     //datePickerService.startDateAnnounced$.subscribe()
   }
 
   ngOnInit() {
-
+    // this.fetchCrime();
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}){
@@ -33,10 +40,20 @@ export class MapViewComponent implements OnInit, OnChanges {
 
   }
 
-  @Input() startDate: any;
-  @Input() endDate: any;
-  @Input() startTime: any;
-
   changeLog: string[] = [];
+
+  fetchCrime(): void {
+    this.dataFetchService
+      .fetchCrime()
+      .subscribe(response => {
+        this.crimeData = response;
+        //console.log("Crime Data: " + JSON.stringify(response));
+      });
+  }
+
+  private convertStringToNumber(value: string): number {
+    console.log(value);
+    return +value;
+  }
 
 }

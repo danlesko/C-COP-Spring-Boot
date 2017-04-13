@@ -48,9 +48,4 @@ export class CrimeTableViewComponent implements OnInit, OnChanges {
         //console.log("Crime Data: " + JSON.stringify(response));
       });
   }
-
-
-
-
-
 }
