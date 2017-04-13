@@ -28,7 +28,7 @@ export class ArrestTableViewComponent implements OnInit, OnChanges {
       }
     }
     this.changeLog.push(log.join(', '));
-    console.log(JSON.stringify(this.arrestsData));
+    //console.log(JSON.stringify(this.arrestsData));
   }
 
   @Input() startDate: any;

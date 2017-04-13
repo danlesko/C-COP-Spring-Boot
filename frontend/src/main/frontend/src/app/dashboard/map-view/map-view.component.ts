@@ -15,6 +15,7 @@ export class MapViewComponent implements OnInit, OnChanges {
   @Input() endDate: any;
   @Input() startTime: any;
   @Input() crimeData: any;
+  @Input() arrestsData: any;
 
   constructor(private dataFetchService : DataFetchService) {
     //datePickerService.startDateAnnounced$.subscribe()
@@ -51,7 +52,7 @@ export class MapViewComponent implements OnInit, OnChanges {
       });
   }
 
-  private convertStringToNumber(value: string): number {
+  convertStringToNumber(value: string): number {
     console.log(value);
     return +value;
   }
