@@ -10,3 +10,7 @@
   min-height: 100%;
   border-radius: 0;
 }
+
+.sebm-google-map-container {
+  height: 100%;
+}

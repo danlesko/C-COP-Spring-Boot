@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     var today = new Date()
-    var priorDateStr = new Date().setDate(today.getDate()-30)
+    var priorDateStr = new Date().setDate(today.getDate()-12)
     this.today = today;
     var priorDate = new Date(priorDateStr);
     this.priorDate = priorDate;
