@@ -36,6 +36,10 @@ export class ArrestTableViewComponent implements OnInit, OnChanges {
   @Input() startTime: any;
   @Input() arrestsData: any;
 
+  @Input() firstNameFilter: any;
+  @Input() lastNameFilter: any;
+  @Input() offenseFilter: any;
+
   changeLog: string[] = [];
 
   //arrestData : any;

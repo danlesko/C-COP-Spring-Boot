@@ -14,8 +14,8 @@
   "dependencies": {
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
-    "@angular/core": "^4.0.0",
-    "@angular/forms": "^4.0.0",
+    "@angular/core": "^4.0.2",
+    "@angular/forms": "^4.0.2",
     "@angular/http": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
@@ -29,6 +29,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
+    "@agm/core": "^1.0.0-beta.0",
     "@angular/cli": "1.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",

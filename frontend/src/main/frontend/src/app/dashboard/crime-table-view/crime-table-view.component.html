@@ -20,10 +20,10 @@
       </thead>
       <tbody>
       <tr *ngFor="let crime of crimeData">
-        <td>{{crime.start_date}}</td>
-        <td>{{crime.location}}</td>
-        <td>{{crime.narrative}}</td>
-        <td>{{crime.place}}</td>
+        <td>{{crime?.start_date}}</td>
+        <td>{{crime?.location}}</td>
+        <td>{{crime?.narrative}}</td>
+        <td>{{crime?.place}}</td>
 
       </tr>
       </tbody>
@@ -71,10 +71,10 @@
               </thead>
               <tbody>
               <tr *ngFor="let crime of crimeData">
-                <td>{{crime.start_date}}</td>
-                <td>{{crime.location}}</td>
-                <td>{{crime.narrative}}</td>
-                <td>{{crime.place}}</td>
+                <td>{{crime?.start_date}}</td>
+                <td>{{crime?.location}}</td>
+                <td>{{crime?.narrative}}</td>
+                <td>{{crime?.place}}</td>
 
               </tr>
               </tbody>

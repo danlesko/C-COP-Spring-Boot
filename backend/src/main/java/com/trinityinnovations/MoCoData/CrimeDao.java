@@ -1,10 +1,7 @@
 package com.trinityinnovations.MoCoData;
 
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,6 +30,7 @@ public class CrimeDao {
         crimes = entityManager.createNativeQuery(
                 "SELECT * " + "FROM crime WHERE date BETWEEN \'" + start_date + "\' AND \'"
                         + end_date + "\'" + "ORDER BY date DESC", Crime.class).getResultList();
+        crimes.removeIf(Objects::isNull);
         return crimes;
     }
 }

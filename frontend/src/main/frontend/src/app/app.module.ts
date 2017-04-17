@@ -16,7 +16,8 @@ import { MapViewComponent } from './dashboard/map-view/map-view.component';
 import { PieViewComponent } from './dashboard/pie-view/pie-view.component';
 import { CrimeTableViewComponent } from './dashboard/crime-table-view/crime-table-view.component';
 import { ArrestTableViewComponent } from './dashboard/arrest-table-view/arrest-table-view.component';
-import { AgmCoreModule } from 'angular2-google-maps/core';
+import { AgmCoreModule } from '@agm/core';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     PieViewComponent,
     CrimeTableViewComponent,
     ArrestTableViewComponent,
-    GoogleChart
+    GoogleChart,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

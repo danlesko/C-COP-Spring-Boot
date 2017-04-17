@@ -29,6 +29,14 @@ export class DashboardComponent implements OnInit {
   crimeData : any;
   arrestsData : any;
 
+  locationFilter: any;
+  narrativeFilter: any;
+  placeFilter: any;
+
+  firstNameFilter: any;
+  lastNameFilter: any;
+  offenseFilter: any;
+
   ngOnInit() {
     var today = new Date()
     var priorDateStr = new Date().setDate(today.getDate()-12)
@@ -76,6 +84,7 @@ export class DashboardComponent implements OnInit {
       .getArrestsInInterval(start_date, end_date)
       .subscribe(response => {
         this.arrestsData = response;
+
         //console.log("Arrest Data: " + JSON.stringify(this.arrestsData));
       });
   }
@@ -90,6 +99,7 @@ export class DashboardComponent implements OnInit {
       .getCrimesInInterval(start_date, end_date)
       .subscribe(response => {
         this.crimeData = response;
+
         //console.log("Arrest Data: " + this.crimeData);
       });
   }

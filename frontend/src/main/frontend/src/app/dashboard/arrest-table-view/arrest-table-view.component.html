@@ -4,7 +4,7 @@
       Arrest Data View
     </div>
 
-    <button class="btn btn-default pull-right" (click)="lgArrestModal.show()" >Max</button>
+    <button class="btn btn-default pull-right" (click)="lgArrestModal.show(); showData();" >Max</button>
     <div class="clearfix"></div>
   </div>
   <div class="panel-body" style="height: 40vh;overflow-y: scroll;">
@@ -65,9 +65,9 @@
               </thead>
               <tbody>
               <tr *ngFor="let arrest of arrestsData">
-                <td>{{arrest.arrest_date}}</td>
-                <td>{{arrest.first_name}} {{arrest.last_name}}</td>
-                <td>{{arrest.offense}}</td>
+                <td>{{arrest?.arrest_date}}</td>
+                <td>{{arrest?.first_name}} {{arrest?.last_name}}</td>
+                <td>{{arrest?.offense}}</td>
               </tr>
               </tbody>
             </table>

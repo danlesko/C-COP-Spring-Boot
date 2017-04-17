@@ -14,14 +14,14 @@
             <img style="max-width:50px; margin-top: -7px;"
                  src="../../assets/img/trinityLogoHorizontal.png">
           </a>
-          <a class="navbar-brand" href="#">C-COP POC-C</a>
+          <a class="navbar-brand" href="#">C-COP</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <!--<li><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
                 <li>
-                  <p class="navbar-btn">
+                  <p class="navbar-btn pull-right">
                     <a class="btn btn-default" data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">View Filters</a>
                   </p>
                 </li>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-md-3">
                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Narrative / Offense
+                    <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Narrative / Offense
                       <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                       <li><a href="#">Thing 1</a></li>
@@ -83,7 +83,7 @@
                   </div>
                   <br />
                   <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">City
+                    <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">City
                       <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                       <li><a href="#">Thing 1</a></li>
@@ -92,7 +92,7 @@
                     </ul>
                   </div>
                   <br />
-                  <button class="btn btn-danger" type="button" (click)="getArrestsInInterval(); getCrimesInInterval();">Apply Global Filters</button>
+                  <button class="btn btn-block btn-danger" type="button" (click)="getArrestsInInterval(); getCrimesInInterval();">Apply Global Filters</button>
                 </div>
             </div>
         </div>
@@ -106,19 +106,19 @@
           <div class="col-md-3">
             <div class="form-group">
               <label class="control-label" for="focusedInput1">Location</label>
-              <input class="form-control" id="focusedInput1" type="text" >
+              <input class="form-control" id="focusedInput1" [(ngModel)]="locationFilter" type="text" >
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label class="control-label" for="focusedInput2">Narrative</label>
-              <input class="form-control" id="focusedInput2" type="text" >
+              <input class="form-control" id="focusedInput2" [(ngModel)]="narrativeFilter" type="text" >
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
               <label class="control-label" for="focusedInput3">Place</label>
-              <input class="form-control" id="focusedInput3" type="text" >
+              <input class="form-control" id="focusedInput3" [(ngModel)]="placeFilter" type="text" >
             </div>
           </div>
           <div class="col-md-3">
@@ -135,14 +135,20 @@
           <h5>Arrest Data Filters</h5>
           <div class="col-md-3">
             <div class="form-group">
-              <label class="control-label" for="focusedInput4">Name</label>
-              <input class="form-control" id="focusedInput4" type="text" >
+              <label class="control-label" for="focusedInput4">First Name</label>
+              <input class="form-control" id="focusedInput4" [(ngModel)]="firstNameFilter" type="text" >
             </div>
           </div>
           <div class="col-md-3">
             <div class="form-group">
-              <label class="control-label" for="focusedInput5">Offense</label>
-              <input class="form-control" id="focusedInput5" type="text" >
+              <label class="control-label" for="focusedInput5">Last Name</label>
+              <input class="form-control" id="focusedInput5" [(ngModel)]="lastNameFilter" type="text" >
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="focusedInput6">Offense</label>
+              <input class="form-control" id="focusedInput6" [(ngModel)]="offenseFilter" type="text" >
             </div>
           </div>
           <div class="col-md-3">
@@ -165,16 +171,20 @@
         <app-map-view [crimeData]="crimeData" [arrestsData]="arrestsData"></app-map-view>
     </div>
     <div class="col-md-4">
-      <app-pie-view [startDate]="startDate" [endDate]="endDate"></app-pie-view>
+      <app-pie-view [startDate]="startDate" [endDate]="endDate"
+                    [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter"
+                    [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter">
+
+      </app-pie-view>
     </div>
     <div class="col-md-12">
       <app-histogram-view [startDate]="startDate" [endDate]="endDate"></app-histogram-view>
     </div>
     <div class="col-md-8">
-      <app-crime-table-view  [crimeData]="crimeData"></app-crime-table-view>
+      <app-crime-table-view  [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter" [locationFilter]="locationFilter" [narrativeFilter]="narrativeFilter" [placeFilter]="placeFilter" ></app-crime-table-view>
     </div>
     <div class="col-md-4">
-      <app-arrest-table-view [arrestsData]="arrestsData"></app-arrest-table-view>
+      <app-arrest-table-view [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter" [firstNameFilter]="firstNameFilter" [lastNameFilter]="lastNameFilter" [offenseFilter]="offenseFilter" ></app-arrest-table-view>
     </div>
 </div>
 
