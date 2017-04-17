@@ -28,17 +28,15 @@
     <!--<td>{{arrest.first_name}} {{arrest.last_name}}</td>-->
     <!--<td>{{arrest.offense}}</td>-->
     <agm-map
-      [latitude] = "51.673858"
-      [longitude] = "7.815982"
+      [latitude] = "39.154743"
+      [longitude] = "-77.240515"
       [zoom]="8">
       <agm-marker
-        *ngFor="let m of markers; let i = index"
-        (markerClick)="clickedMarker(m.label, i)"
-        [latitude]="m.lat"
-        [longitude]="m.lng"
-        [label]="m.label"
-        [markerDraggable]="m.draggable"
-        (dragEnd)="markerDragEnd(m, $event)">
+        *ngFor="let m of crimeData; let i = index"
+        [latitude]="m?.latitude"
+        [longitude]="m?.longitude"
+        [label]="displayValues(m)"
+      >
       </agm-marker>
     </agm-map>
   </div>
