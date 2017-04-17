@@ -463,8 +463,8 @@ public class HttpGet {
                 if (point.length() > 8) {
                     point = point.substring(7, point.length() - 1);
                     String[] points = point.split(" ");
-                    setLatitude(Double.valueOf(points[0]));
-                    setLongitude(Double.valueOf(points[1]));
+                    setLatitude(Double.valueOf(points[1]));
+                    setLongitude(Double.valueOf(points[0]));
                 }
             }
         }

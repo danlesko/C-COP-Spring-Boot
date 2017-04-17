@@ -32,11 +32,14 @@
       [longitude] = "-77.240515"
       [zoom]="8">
       <agm-marker
-        *ngFor="let m of crimeData; let i = index"
+        *ngFor="let m of crimeData"
         [latitude]="m?.latitude"
         [longitude]="m?.longitude"
-        [label]="displayValues(m)"
+        [label]="C"
       >
+        <agm-info-window>
+          <strong>{{m?.narrative}}</strong>
+        </agm-info-window>
       </agm-marker>
     </agm-map>
   </div>
