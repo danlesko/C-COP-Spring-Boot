@@ -6,7 +6,6 @@ import { DataFetchService } from '../../global/data-fetch/data-fetch.service';
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.css']
-
 })
 
 export class MapViewComponent implements OnInit, OnChanges {
@@ -17,12 +16,35 @@ export class MapViewComponent implements OnInit, OnChanges {
   @Input() crimeData: any;
   @Input() arrestsData: any;
 
+  markers: marker[] = [
+    {
+      lat: 51.673858,
+      lng: 7.815982,
+      label: 'A',
+      draggable: true
+    },
+    {
+      lat: 51.373858,
+      lng: 7.215982,
+      label: 'B',
+      draggable: false
+    },
+    {
+      lat: 51.723858,
+      lng: 7.895982,
+      label: 'C',
+      draggable: true
+    }
+  ];
+
+  // markers: marker[] = [];
+
   constructor(private dataFetchService : DataFetchService) {
     //datePickerService.startDateAnnounced$.subscribe()
   }
 
   ngOnInit() {
-    // this.fetchCrime();
+    this.fetchCrime();
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}){
@@ -38,7 +60,6 @@ export class MapViewComponent implements OnInit, OnChanges {
       }
     }
     this.changeLog.push(log.join(', '));
-
   }
 
   changeLog: string[] = [];
@@ -57,4 +78,11 @@ export class MapViewComponent implements OnInit, OnChanges {
     return +value;
   }
 
+}
+
+interface marker {
+  lat: number;
+  lng: number;
+  label?: string;
+  draggable: boolean;
 }
