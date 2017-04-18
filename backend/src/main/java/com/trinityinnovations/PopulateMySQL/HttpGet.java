@@ -21,6 +21,9 @@ import org.apache.commons.httpclient.methods.GetMethod;
 /**
  * Created by Rob on 4/2/17.
  */
+
+// SET GLOBAL time_zone = 'US/Eastern';
+// SET time_zone = '+S/Eastern';
 public class HttpGet {
 
 /*
