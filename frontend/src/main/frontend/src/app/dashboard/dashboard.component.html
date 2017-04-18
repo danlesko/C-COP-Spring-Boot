@@ -168,7 +168,8 @@
 
 <div >
     <div class="col-md-8">
-        <app-map-view [crimeData]="crimeData" [arrestsData]="arrestsData"></app-map-view>
+        <app-map-view [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter"
+                      [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter"></app-map-view>
     </div>
     <div class="col-md-4">
       <app-pie-view [startDate]="startDate" [endDate]="endDate"

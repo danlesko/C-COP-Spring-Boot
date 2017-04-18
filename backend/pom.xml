@@ -83,6 +83,11 @@
 			<artifactId>javaetmoi-hibernate5-hydrate</artifactId>
 			<version>2.3</version>
 		</dependency>
+    <dependency>
+      <groupId>com.google.maps</groupId>
+      <artifactId>google-maps-services</artifactId>
+      <version>0.1.20</version>
+    </dependency>
 	</dependencies>
 
 	<build>

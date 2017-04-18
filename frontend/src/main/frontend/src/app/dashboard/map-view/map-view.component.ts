@@ -78,6 +78,12 @@ export class MapViewComponent implements OnInit, OnChanges {
     return +value;
   }
 
+  // displayValues(m: any): string{
+  //   console.log(m.latitude);
+  //   console.log(m.longitude);
+  //   return "C"
+  // }
+
 }
 
 interface marker {
