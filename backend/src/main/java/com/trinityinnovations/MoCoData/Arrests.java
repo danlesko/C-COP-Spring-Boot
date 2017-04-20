@@ -1,17 +1,7 @@
 package com.trinityinnovations.MoCoData;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.sql.*;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Iterator;
-
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Created by Dan Lesko on 4/9/2017.
@@ -19,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @IdClass(Arrests.class)
 @Table(name = "arrest")
-public class Arrests implements Serializable{
+public class Arrests implements Serializable {
 
   @Id
   @Column(name = "last_name")
@@ -55,16 +45,6 @@ public class Arrests implements Serializable{
 
   @Column(name = "longitude")
   private double longitude;
-
-//    @Transient
-//    @Column(name = "start_date")
-//    private String start_date;
-//
-//    @Transient
-//    @Column(name = "end_date")
-//    private String end_date;
-
-  //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
 
   public String getLast_name() {
     return last_name;
@@ -136,8 +116,7 @@ public class Arrests implements Serializable{
     }
   }
 
-  public /*Timestamp*/ String getArrest_date() {
-    //Timestamp myDate = new Timestamp(sdf.parse(arrest_date, new ParsePosition(0)).getTime());
+  public String getArrest_date() {
     return arrest_date;
   }
 
@@ -172,30 +151,5 @@ public class Arrests implements Serializable{
   public void setLongitude(double longitude) {
     this.longitude = longitude;
   }
-
-//    public /*Timestamp*/ String getStart_date() {
-//        //Timestamp myDate = new Timestamp(sdf.parse(start_date, new ParsePosition(0)).getTime());
-//        return start_date;
-//    }
-//
-//    public void setStart_date(String start_date) {
-//        if (start_date.length() > 0) {
-//            this.start_date = start_date;
-//        }
-//    }
-//
-//    public /*Timestamp*/ String getEnd_date() {
-//        if (end_date == null) {
-//            return null;
-//        }
-//        //Timestamp myDate = new Timestamp(sdf.parse(end_date, new ParsePosition(0)).getTime());
-//        return end_date;
-//    }
-//
-//    public void setEnd_date(String end_date) {
-//        if (end_date.length() > 0) {
-//            this.end_date = end_date;
-//        }
-//    }
 
 }

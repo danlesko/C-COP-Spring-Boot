@@ -8,17 +8,11 @@ import {GoogleChart} from 'angular2-google-chart/directives/angular2-google-char
 })
 export class HistogramViewComponent implements OnInit, OnChanges {
 
-  constructor() {
-    //datePickerService.startDateAnnounced$.subscribe()
-  }
+  constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
-
-  ngOnChanges(changes: {[propKey: string]: SimpleChange}){
-
-  }
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}){}
 
   @Input() startDate: any;
   @Input() endDate: any;
@@ -43,5 +37,4 @@ export class HistogramViewComponent implements OnInit, OnChanges {
     width: 1000,
     height: 800
   };
-
 }

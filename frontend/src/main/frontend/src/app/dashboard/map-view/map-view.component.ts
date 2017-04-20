@@ -1,47 +1,21 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { DataFetchService } from '../../global/data-fetch/data-fetch.service';
-//import {DatePickerService} from '../../global/date-picker/date-picker.service';
 
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
-  styleUrls: ['./map-view.component.css']
+  styleUrls: ['./map-view.component.css'],
+  styles: [`
+    .sebm-google-map-container {
+       height: 300px;
+     }
+  `]
 })
-
 export class MapViewComponent implements OnInit, OnChanges {
-
-  @Input() startDate: any;
-  @Input() endDate: any;
-  @Input() startTime: any;
   @Input() crimeData: any;
   @Input() arrestsData: any;
 
-  markers: marker[] = [
-    {
-      lat: 51.673858,
-      lng: 7.815982,
-      label: 'A',
-      draggable: true
-    },
-    {
-      lat: 51.373858,
-      lng: 7.215982,
-      label: 'B',
-      draggable: false
-    },
-    {
-      lat: 51.723858,
-      lng: 7.895982,
-      label: 'C',
-      draggable: true
-    }
-  ];
-
-  // markers: marker[] = [];
-
-  constructor(private dataFetchService : DataFetchService) {
-    //datePickerService.startDateAnnounced$.subscribe()
-  }
+  constructor(private dataFetchService : DataFetchService) { }
 
   ngOnInit() {
     this.fetchCrime();
@@ -69,21 +43,8 @@ export class MapViewComponent implements OnInit, OnChanges {
       .fetchCrime()
       .subscribe(response => {
         this.crimeData = response;
-        //console.log("Crime Data: " + JSON.stringify(response));
       });
   }
-
-  convertStringToNumber(value: string): number {
-    console.log(value);
-    return +value;
-  }
-
-  // displayValues(m: any): string{
-  //   console.log(m.latitude);
-  //   console.log(m.longitude);
-  //   return "C"
-  // }
-
 }
 
 interface marker {

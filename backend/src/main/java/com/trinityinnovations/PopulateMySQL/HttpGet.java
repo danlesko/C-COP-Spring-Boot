@@ -5,7 +5,6 @@ import java.sql.*;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
-
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.errors.ApiException;
@@ -13,15 +12,15 @@ import com.google.maps.model.GeocodingResult;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.UsernamePasswordCredentials;
-import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
 
+/*
+ * Written by Joshua Sharo
+ */
 public class HttpGet {
 
 /*
@@ -57,13 +56,13 @@ public class HttpGet {
  */
 
 
-  /**
-   * This is a simple text mode application that demonstrates
-   * how to use the Jakarta HttpClient API.
-   *
-   * @author <a href="mailto:jsdever@apache.org">Jeff Dever</a>
-   * @author Ortwin Glück
-   */
+/*
+ * This is a simple text mode application that demonstrates
+ * how to use the Jakarta HttpClient API.
+ *
+ * @author <a href="mailto:jsdever@apache.org">Jeff Dever</a>
+ * @author Ortwin Glück
+ */
 
 
   private static final void printUsage() {
@@ -77,24 +76,30 @@ public class HttpGet {
     System.out.println();
   }
 
+  /**
+   * Makes an HTTP request.
+   * @param url The address at which to make the request.
+   * @return The response body sent back from the server.
+   */
   public static String query(String url) {
-    //create a singular HttpClient object
+    // Create a singular HttpClient object
     HttpClient client = new HttpClient();
 
-    //establish a connection within 5 seconds
+    // Establish a connection within 5 seconds
     client.getHttpConnectionManager().
       getParams().setConnectionTimeout(5000);
 
     HttpMethod method = null;
 
-    //create a method object
+    // Create a method object
     method = new GetMethod(url);
     method.setFollowRedirects(false);
 
-
+    // The app token is required by the Socrata servers in order to received data
+    // without throttling
     method.setRequestHeader("X-App-Token", "4212eAK21nPoYcV7DN22LKbcH");
 
-    //execute the method
+    // Execute the method
     String responseBody = null;
     try {
       client.executeMethod(method);
@@ -109,7 +114,7 @@ public class HttpGet {
     }
 
 
-    //write out the request headers
+    // Write out the request headers
     System.out.println("*** Request ***");
     System.out.println("Request Path: " + method.getPath());
     System.out.println("Request Query: " + method.getQueryString());
@@ -118,7 +123,7 @@ public class HttpGet {
       System.out.print(requestHeaders[i]);
     }
 
-    //write out the response headers
+    // Write out the response headers
     System.out.println("*** Response ***");
     System.out.println("Status Line: " + method.getStatusLine());
     Header[] responseHeaders = method.getResponseHeaders();
@@ -126,22 +131,24 @@ public class HttpGet {
       System.out.print(responseHeaders[i]);
     }
 
-    //write out the response body
+    // Write out the response body
     System.out.println("*** Response Body ***");
     System.out.println(responseBody);
 
-    //clean up the connection resources
+    // Clean up the connection resources
     method.releaseConnection();
 
     return responseBody;
   }
 
+  // Gather data from the Socrata API and populate the mySQL database
   public static void main(String[] args) {
-//  Convert from String to Java Date
+    //Convert from String to Java Date
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
     Connection conn = null;
     Statement stmt = null;
     String date = "";
+
     // Code based on example
     // from "https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html"
     try {
@@ -171,6 +178,7 @@ public class HttpGet {
     // Holds the data received from the query
     String responseBody;
 
+    // Determines whether the Crime table requires an update or a complete pull request
     if (!date.equalsIgnoreCase("0")) {
       responseBody = query("https://data.montgomerycountymd.gov/resource/yc8a-5df8.csv?$where=date%3E'"
         + date + "'");
@@ -179,6 +187,7 @@ public class HttpGet {
       responseBody = query("https://data.montgomerycountymd.gov/resource/yc8a-5df8.csv?$limit=200000");
     }
 
+    // Holds a single entry from the Montgomery County Crime Database
     class CrimeEntry {
       String incident_id;
       String case_number;
@@ -459,6 +468,9 @@ public class HttpGet {
       }
 
       public void setPoint(String point) {
+        // The Point attribute in the Montgomery County Database holds the latitude and longitude for each entry
+        // To extract each from this string, we rely on a consistent layout of "Point (latitude, longitude)",
+        // and process the fields accordingly
         if (point.length() > 8) {
           point = point.substring(7, point.length() - 1);
           String[] points = point.split(" ");
@@ -468,6 +480,7 @@ public class HttpGet {
       }
     }
 
+    // This is used to send mySQL commands to the database
     PreparedStatement pstmt = null;
 
     try {
@@ -503,6 +516,7 @@ public class HttpGet {
             }
           }
 
+          // Gathers data from the response from the Socrata API
           entry.setAddress_number(iterator.next());
           entry.setAgency(iterator.next());
           entry.setBeat(iterator.next());
@@ -529,6 +543,7 @@ public class HttpGet {
           entry.setZip_code(iterator.next());
 
           try {
+            // Sets field in the pstmt variable to be executed on the Crime table
             int param = 1;
             pstmt.setString(param++, entry.getIncident_id());
             pstmt.setString(param++, entry.getCase_number());
@@ -566,7 +581,7 @@ public class HttpGet {
     } catch (IOException e) {
       System.out.println(e);
     }
-
+    // Holds a single entry from the Montgomery County Arrest Database
     class ArrestEntry {
       String last_name;
       String first_name;
@@ -625,12 +640,14 @@ public class HttpGet {
       }
 
       public void setStreet(String street) throws InterruptedException, ApiException, IOException {
-        if (street.length() > 0 && street.equals("NO FIXED ADDRESS")) {
-//          setLatitude(null);
-//          setLongitude(null);
-        }
+        // Some arrest entries do not have a fixed address, and attempting to fill the latitude/longitude
+        // fields causes the entries to receive the latitude and longitude of the last successfully filled
+        // entry. If there is no street, do nothing; the database will ignore the entry.
+        if (street.length() > 0 && street.equals("NO FIXED ADDRESS")) {}
         else if (street.length() > 0) {
           this.street = street;
+
+          //Use the Google Geocoding API to convert the street address into a latitude/longitude pair
           GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyAg_m9tMfa7thE9gDlTTtlO8MaChDwglcA");
           GeocodingResult[] results = new GeocodingResult[0];
           try {
@@ -718,6 +735,8 @@ public class HttpGet {
       // Allows you to use the SQL
       stmt = conn.createStatement();
       ResultSet results = stmt.executeQuery(sql);
+
+      // Get the most recent date from the Arrest table
       if (results.next()) {
         date = results.getString("arrest_date");
         date = date.substring(0, 10) + "T" + date.substring(11) + ".000";
@@ -731,6 +750,7 @@ public class HttpGet {
       System.out.println("VendorError: " + ex.getErrorCode());
     }
 
+    // Determines whether the Arrest table requires an update or a complete pull request
     if (!date.equalsIgnoreCase("0")) {
       responseBody = query("https://data.montgomerycountymd.gov/resource/mavv-8s3f.csv?$where=arrest_date%3E'"
         + date + "'");
@@ -767,6 +787,8 @@ public class HttpGet {
               iterator.next(); // Overlook computed regions (checksums)
             }
           }
+
+          // Gathers data from the response from the Socrata API
           entry.setAge(iterator.next());
           entry.setArrest_date(iterator.next());
           entry.setCity(iterator.next());
@@ -778,6 +800,7 @@ public class HttpGet {
           entry.setStreet(iterator.next());
 
           try {
+            // Sets field in the pstmt variable to be executed on the Arrest table
             int param = 1;
             pstmt.setString(param++, entry.getLast_name());
             pstmt.setString(param++, entry.getFirst_name());

@@ -1,102 +1,69 @@
 <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
-                    <!--data-target="#bs-example-navbar-collapse-1">-->
-                <!--<span class="sr-only">Toggle navigation</span>-->
-                <!--<span class="icon-bar"></span>-->
-                <!--<span class="icon-bar"></span>-->
-                <!--<span class="icon-bar"></span>-->
-            <!--</button>-->
-
-          <!--<a><img src="../../assets/img/trinityLogoHorizontal.png" width="10%" height="10%" /></a>-->
-          <a class="navbar-brand" rel="home" href="#" title="C-COP">
-            <img style="max-width:50px; margin-top: -7px;"
-                 src="../../assets/img/trinityLogoHorizontal.png">
-          </a>
-          <a class="navbar-brand" href="#">C-COP</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <!--<li><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
-                <li>
-                  <p class="navbar-btn pull-right">
-                    <a class="btn btn-default" data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">View Filters</a>
-                  </p>
-                </li>
-                <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown-->
-                        <!--<span class="caret"></span></a>-->
-                    <!--<ul class="dropdown-menu" role="menu">-->
-                        <!--<li><a href="#">Action</a></li>-->
-                        <!--<li><a href="#">Another action</a></li>-->
-                        <!--<li><a href="#">Something else here</a></li>-->
-                        <!--<li class="divider"></li>-->
-                        <!--<li><a href="#">Separated link</a></li>-->
-                        <!--<li class="divider"></li>-->
-                        <!--<li><a href="#">One more separated link</a></li>-->
-                    <!--</ul>-->
-                <!--</li>-->
-            </ul>
-            <!--<form class="navbar-form navbar-right" role="search">-->
-                <!--<div class="form-group">-->
-                    <!--<input type="text" class="form-control" placeholder="Search">-->
-                <!--</div>-->
-                <!--<button type="submit" class="btn btn-default">Submit</button>-->
-            <!--</form>-->
-          <!--<ul class="nav navbar-nav navbar-right">-->
-            <!--&lt;!&ndash;<a href="#" class="navbar-right"><img src="../../assets/img/trinityLogoHorizontal.png" width="10%" height="10%" /></a>&ndash;&gt;-->
-          <!--</ul>-->
-        </div>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" rel="home" href="#" title="C-COP">
+        <img style="max-width:50px; margin-top: -7px;"
+             src="../../assets/img/trinityLogoHorizontal.png">
+      </a>
+      <a class="navbar-brand" href="#">C-COP</a>
     </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <p class="navbar-btn pull-right">
+            <a class="btn btn-default" data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">View Filters</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
 
 <div class="collapse" id="collapseFilters">
-<div class="controlContainer">
+  <div class="controlContainer">
     <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div class="row">
-              <h5>Global Filters</h5>
-                <div class="col-md-3">
-                <my-date-range-picker name="mydaterange" [options]="myDateRangePickerOptions" [(ngModel)]="model" required
-                                  ></my-date-range-picker> <!-- (dateRangeChanged)="onDateRangeChanged($event)" -->
-                </div>
-                <div class="col-md-3">
-                    Start Time: <br />
-                    <timepicker [(ngModel)]="startTime"></timepicker>
-                </div>
-                <div class="col-md-3">
-                    End Time: <br />
-                    <timepicker [(ngModel)]="endTime"></timepicker>
-                </div>
-                <div class="col-md-3">
-                  <div class="dropdown">
-                    <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Narrative / Offense
-                      <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Thing 1</a></li>
-                      <li><a href="#">Thing 2</a></li>
-                      <li><a href="#">Thing 3</a></li>
-                    </ul>
-                  </div>
-                  <br />
-                  <div class="dropdown">
-                    <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">City
-                      <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Thing 1</a></li>
-                      <li><a href="#">Thing 2</a></li>
-                      <li><a href="#">Thing 3</a></li>
-                    </ul>
-                  </div>
-                  <br />
-                  <button class="btn btn-block btn-danger" type="button" (click)="getArrestsInInterval(); getCrimesInInterval();">Apply Global Filters</button>
-                </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <h5>Global Filters</h5>
+          <div class="col-md-3">
+            <my-date-range-picker name="mydaterange" [options]="myDateRangePickerOptions" [(ngModel)]="model" required>
+            </my-date-range-picker>
+          </div>
+          <div class="col-md-3">
+            Start Time: <br />
+            <timepicker [(ngModel)]="startTime"></timepicker>
+          </div>
+          <div class="col-md-3">
+            End Time: <br />
+            <timepicker [(ngModel)]="endTime"></timepicker>
+          </div>
+          <div class="col-md-3">
+            <div class="dropdown">
+              <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Narrative / Offense
+                <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Thing 1</a></li>
+                <li><a href="#">Thing 2</a></li>
+                <li><a href="#">Thing 3</a></li>
+              </ul>
             </div>
+            <br />
+            <div class="dropdown">
+              <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">City
+                <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Thing 1</a></li>
+                <li><a href="#">Thing 2</a></li>
+                <li><a href="#">Thing 3</a></li>
+              </ul>
+            </div>
+            <br />
+            <button class="btn btn-block btn-danger" type="button" (click)="getArrestsInInterval(); getCrimesInInterval();">Apply Global Filters</button>
+          </div>
         </div>
-        <div class="col-md-1"></div>
+      </div>
+      <div class="col-md-1"></div>
     </div>
     <div class="row">
       <div class="col-md-1"></div>
@@ -122,7 +89,6 @@
             </div>
           </div>
           <div class="col-md-3">
-
           </div>
         </div>
       </div>
@@ -152,10 +118,8 @@
             </div>
           </div>
           <div class="col-md-3">
-
           </div>
           <div class="col-md-3">
-
           </div>
         </div>
       </div>
@@ -163,29 +127,27 @@
     </div>
     <br />
     <br />
-</div>
+  </div>
 </div>
 
 <div >
-    <div class="col-md-8">
-        <app-map-view [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter"
-                      [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter"></app-map-view>
-    </div>
-    <div class="col-md-4">
-      <app-pie-view [startDate]="startDate" [endDate]="endDate"
-                    [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter"
-                    [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter">
-
-      </app-pie-view>
-    </div>
-    <div class="col-md-12">
-      <app-histogram-view [startDate]="startDate" [endDate]="endDate"></app-histogram-view>
-    </div>
-    <div class="col-md-8">
-      <app-crime-table-view  [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter" [locationFilter]="locationFilter" [narrativeFilter]="narrativeFilter" [placeFilter]="placeFilter" ></app-crime-table-view>
-    </div>
-    <div class="col-md-4">
-      <app-arrest-table-view [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter" [firstNameFilter]="firstNameFilter" [lastNameFilter]="lastNameFilter" [offenseFilter]="offenseFilter" ></app-arrest-table-view>
-    </div>
+  <div class="col-md-8">
+    <app-map-view [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter"
+                  [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter"></app-map-view>
+  </div>
+  <div class="col-md-4">
+    <app-pie-view [startDate]="startDate" [endDate]="endDate"
+                  [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter"
+                  [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter">
+    </app-pie-view>
+  </div>
+  <div class="col-md-12">
+    <app-histogram-view [startDate]="startDate" [endDate]="endDate"></app-histogram-view>
+  </div>
+  <div class="col-md-8">
+    <app-crime-table-view  [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter" [locationFilter]="locationFilter" [narrativeFilter]="narrativeFilter" [placeFilter]="placeFilter" ></app-crime-table-view>
+  </div>
+  <div class="col-md-4">
+    <app-arrest-table-view [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter" [firstNameFilter]="firstNameFilter" [lastNameFilter]="lastNameFilter" [offenseFilter]="offenseFilter" ></app-arrest-table-view>
+  </div>
 </div>
-

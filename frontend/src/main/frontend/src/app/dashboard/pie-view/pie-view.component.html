@@ -1,33 +1,17 @@
-<div class="panel panel-warning panel-default">
+<div class="panel panel-default">
   <div class="panel-heading">
     <div class="pull-left" style="font-size: 1.5em;">
       Pie View
     </div>
-
     <button class="btn btn-default pull-right" (click)="lgPieModal.show()">Max</button>
     <div class="clearfix"></div>
   </div>
   <div class="panel-body" style="height: 40vh;overflow-y: scroll;">
-    <!--StartDate: <br />-->
-    <!--Month: {{startDate.month}} Day: {{startDate.day}} Year: {{startDate.year}}-->
-    <!--<br />-->
-    <!--EndDate: <br />-->
-    <!--Month: {{endDate.month}} Day: {{endDate.day}} Year: {{endDate.year}}-->
-
-    <!--<div class="chart"-->
-         <!--chart-->
-         <!--[data]="data"-->
-         <!--[options]="options"-->
-         <!--[labels]="labels"-->
-         <!--[columnTypes]="columnTypes"-->
-         <!--[chartType]="chartType">-->
-    <!--</div>-->
     <div style="width: 100%; height: 100%">
       <div id="pie_chart" [chartData]="pie_ChartData" [chartOptions]="pie_ChartOptions" chartType="PieChart" GoogleChart></div>
     </div>
   </div>
 </div>
-
 
 <div bsModal #lgPieModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
   <div class="modal-dialog" >
@@ -41,21 +25,10 @@
       <div class="modal-body">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <!--<h3 class="panel-title pull-left">-->
-            <!--With short text it works great!-->
-            <!--</h3>-->
-
             <div class="clearfix"></div>
           </div>
-          <div class="panel-body" style="height: 100vh;overflow-y: scroll;">
-            <!--<strong>StartDate</strong> <br />-->
-            <!--Month: {{startDate.month}} Day: {{startDate.day}} Year: {{startDate.year}}-->
-            <!--<br />-->
-            <!--<strong>EndDate:</strong> <br />-->
-            <!--Month: {{endDate.month}} Day: {{endDate.day}} Year: {{endDate.year}}-->
-            <!--<br />-->
-            <!--<strong>Time:</strong> <br /> {{startTime}} <br />-->
-            <div style="width: 100%; height: 100%">
+          <div class="panel-body" style="height: 80vh;overflow-y: scroll;">
+            <div style="width: 100%; height: 100%" align="center">
               <div id="pie_chartLG" [chartData]="pie_ChartData" [chartOptions]="pie_ChartOptionsLG" chartType="PieChart" GoogleChart></div>
             </div>
           </div>

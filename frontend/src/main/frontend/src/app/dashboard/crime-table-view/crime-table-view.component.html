@@ -1,9 +1,8 @@
-<div class="panel panel-danger panel-default">
+<div class="panel panel-default">
   <div class="panel-heading">
     <div class="pull-left" style="font-size: 1.5em;">
       Crime Data View
     </div>
-
     <button class="btn btn-default pull-right"  (click)="lgCrimeModal.show()" >Max</button>
     <div class="clearfix"></div>
   </div>
@@ -15,7 +14,6 @@
         <th>Location</th>
         <th>Narrative</th>
         <th>Place</th>
-
       </tr>
       </thead>
       <tbody>
@@ -24,12 +22,9 @@
         <td>{{crime?.location}}</td>
         <td>{{crime?.narrative}}</td>
         <td>{{crime?.place}}</td>
-
       </tr>
       </tbody>
     </table>
-
-
   </div>
 </div>
 
@@ -45,20 +40,9 @@
       <div class="modal-body">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <!--<h3 class="panel-title pull-left">-->
-            <!--With short text it works great!-->
-            <!--</h3>-->
-
             <div class="clearfix"></div>
           </div>
-          <div class="panel-body" style="height: 100vh;overflow-y: scroll;">
-            <!--<strong>StartDate</strong> <br />-->
-            <!--Month: {{startDate.month}} Day: {{startDate.day}} Year: {{startDate.year}}-->
-            <!--<br />-->
-            <!--<strong>EndDate:</strong> <br />-->
-            <!--Month: {{endDate.month}} Day: {{endDate.day}} Year: {{endDate.year}}-->
-            <!--<br />-->
-            <!--<strong>Time:</strong> <br /> {{startTime}} <br />-->
+          <div class="panel-body" style="height: 80vh;overflow-y: scroll;">
             <table class="table table-bordered">
               <thead>
               <tr>
@@ -66,7 +50,6 @@
                 <th>Location</th>
                 <th>Narrative</th>
                 <th>Place</th>
-
               </tr>
               </thead>
               <tbody>
@@ -75,7 +58,6 @@
                 <td>{{crime?.location}}</td>
                 <td>{{crime?.narrative}}</td>
                 <td>{{crime?.place}}</td>
-
               </tr>
               </tbody>
             </table>

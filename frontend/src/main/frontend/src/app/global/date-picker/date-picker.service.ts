@@ -8,8 +8,8 @@ export class DatePickerService {
   constructor() { }
 
   // Observable string sources
-  private startDate : any;//= new Subject<any>();
-  private endDate: any;// = new Subject<any>();
+  private startDate : any; //= new Subject<any>();
+  private endDate: any; // = new Subject<any>();
   private startSubject: Subject<any> = new Subject<any>();
 
   setStartDate(startDate: any): void {

@@ -38,5 +38,4 @@ export class DataFetchService {
       .get(url)
       .map(response=> response.json() as any);
   }
-
 }

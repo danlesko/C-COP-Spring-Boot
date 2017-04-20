@@ -12,7 +12,6 @@ export class CrimeTableViewComponent implements OnInit, OnChanges {
   constructor(private dataFetchService : DataFetchService) { }
 
   ngOnInit() {
-    //this.fetchCrime();
   }
 
   changeLog: string[] = [];
@@ -34,22 +33,16 @@ export class CrimeTableViewComponent implements OnInit, OnChanges {
 
   @Input() startDate: any;
   @Input() endDate: any;
-  @Input() startTime: any;
   @Input() crimeData: any;
-
   @Input() locationFilter: any;
   @Input() narrativeFilter: any;
   @Input() placeFilter: any;
-
-
-  //crimeData : any;
 
   fetchCrime(): void {
     this.dataFetchService
       .fetchCrime()
       .subscribe(response => {
         this.crimeData = response;
-        //console.log("Crime Data: " + JSON.stringify(response));
       });
   }
 }
