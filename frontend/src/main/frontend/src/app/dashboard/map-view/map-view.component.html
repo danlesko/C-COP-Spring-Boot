@@ -39,8 +39,9 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
+        <agm-map #largeMap></agm-map>
         <h4 class="modal-title pull-left">Large Map View</h4>
-        <button type="button" class="close pull-right" (click)="lgMapModal.hide()" aria-label="Close">
+        <button type="button" class="close pull-right" (click)="lgMapModal.hide(); largeMap.triggerResize()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -50,30 +51,30 @@
             <div class="clearfix"></div>
           </div>
           <div class="panel-body" style="height: 80vh; overflow-y: scroll;">
-            <agm-map
+            <agm-map #largeMap
               [latitude] = "39.154743"
               [longitude] = "-77.240515"
               [zoom]="8">
-              <!--<agm-marker-->
-                <!--*ngFor="let m of crimeData"-->
-                <!--[latitude]="m?.latitude"-->
-                <!--[longitude]="m?.longitude"-->
-                <!--[label]="C"-->
-              <!--&gt;-->
-                <!--<agm-info-window>-->
-                  <!--<strong>Crime: {{m?.narrative}}</strong>-->
-                <!--</agm-info-window>-->
-              <!--</agm-marker>-->
-              <!--<agm-marker-->
-                <!--*ngFor="let a of arrestsData"-->
-                <!--[latitude]="a?.latitude"-->
-                <!--[longitude]="a?.longitude"-->
-                <!--[label]="A"-->
-              <!--&gt;-->
-                <!--<agm-info-window>-->
-                  <!--<strong>Arrest: {{a?.offense}}</strong>-->
-                <!--</agm-info-window>-->
-              <!--</agm-marker>-->
+              <agm-marker
+                *ngFor="let m of crimeData"
+                [latitude]="m?.latitude"
+                [longitude]="m?.longitude"
+                [label]="C"
+              >
+                <agm-info-window>
+                  <strong>Crime: {{m?.narrative}}</strong>
+                </agm-info-window>
+              </agm-marker>
+              <agm-marker
+                *ngFor="let a of arrestsData"
+                [latitude]="a?.latitude"
+                [longitude]="a?.longitude"
+                [label]="A"
+              >
+                <agm-info-window>
+                  <strong>Arrest: {{a?.offense}}</strong>
+                </agm-info-window>
+              </agm-marker>
             </agm-map>
           </div>
         </div>
