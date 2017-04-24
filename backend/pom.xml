@@ -8,6 +8,7 @@
 
 	<name>backend</name>
 	<description>C-COP Project backend</description>
+  <packaging>war</packaging>
 
 	<parent>
 		<groupId>com.trinityinnovations</groupId>

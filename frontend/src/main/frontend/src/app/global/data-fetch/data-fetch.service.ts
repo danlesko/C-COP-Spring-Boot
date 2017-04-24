@@ -22,8 +22,8 @@ export class DataFetchService {
       .map(response => response.json() as any);
   }
 
-  private crimeURL = '/CrimeData';
-  private arrestsURL = '/ArrestsData';
+  private crimeURL = './CrimeData';
+  private arrestsURL = './ArrestsData';
 
   getArrestsInInterval(start_date, end_date): Observable<any>{
     let url = `${this.arrestsURL}/${start_date}/${end_date}`;

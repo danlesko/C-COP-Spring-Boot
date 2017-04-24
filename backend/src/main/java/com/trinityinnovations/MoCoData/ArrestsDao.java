@@ -27,3 +27,14 @@ public class ArrestsDao {
     return arrests;
   }
 }
+
+//  SELECT
+//  DATE_FORMAT(
+//    MIN(arrest_date),
+//    '%Y/%m/%d'
+//      ) AS tmstamp,
+//      COUNT(*) AS cnt
+//      FROM
+//      arrest
+//      WHERE arrest_date BETWEEN "2017-04-02 12:40:00" AND "2017-04-10 12:40:00"
+//      GROUP BY ROUND(UNIX_TIMESTAMP(arrest_date) / 86400)
