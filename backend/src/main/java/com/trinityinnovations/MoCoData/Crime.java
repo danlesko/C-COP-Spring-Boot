@@ -86,6 +86,8 @@ public class Crime implements Serializable {
   @Column(name = "geolocation_state")
   private String geolocation_state;
 
+
+
   public String getIncident_id() {
     return incident_id;
   }

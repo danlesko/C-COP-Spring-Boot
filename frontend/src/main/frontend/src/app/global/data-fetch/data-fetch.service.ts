@@ -38,4 +38,18 @@ export class DataFetchService {
       .get(url)
       .map(response=> response.json() as any);
   }
+
+  getArrestsHistogram(start_date, end_date): Observable<any>{
+    let url = `${this.arrestsURL}/histogram/${start_date}/${end_date}`;
+    return this.http
+      .get(url)
+      .map(response=> response.json() as any);
+  }
+
+  getCrimesHistogram(start_date, end_date): Observable<any>{
+    let url = `${this.crimeURL}/histogram/${start_date}/${end_date}`;
+    return this.http
+      .get(url)
+      .map(response=> response.json() as any);
+  }
 }

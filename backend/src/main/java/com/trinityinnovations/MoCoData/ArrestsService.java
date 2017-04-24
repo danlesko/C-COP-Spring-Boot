@@ -18,4 +18,9 @@ public class ArrestsService {
   public List<Arrests> getArrestsInInterval(String start_date, String end_date) {
     return arrestsDao.getArrestsInInterval(start_date, end_date);
   }
+
+  @Transactional
+  public List<HistogramWrapper> getArrestsHistogram(String start_date, String end_date) {
+    return arrestsDao.getArrestsHistogram(start_date, end_date);
+  }
 }
