@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   constructor( private dataFetchService: DataFetchService) { }
 
-  startDate: any;
+  beginDate: any;
   endDate: any;
   startTime: Date = new Date();
   endTime: Date = new Date();
@@ -37,7 +37,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     var today = new Date()
-    var priorDateStr = new Date().setDate(today.getDate()-12)
+
+    // Default time span is 2 weeks
+    var priorDateStr = new Date().setDate(today.getDate()-14)
     this.today = today;
     var priorDate = new Date(priorDateStr);
     this.priorDate = priorDate;
@@ -45,25 +47,42 @@ export class DashboardComponent implements OnInit {
     this.model = {
       beginDate: {year: this.priorDate.getFullYear(), month: this.priorDate.getMonth()+1, day: this.priorDate.getDate()},
       endDate: {year: this.today.getFullYear(), month: this.today.getMonth()+1, day:this.today.getDate()}
-    };
-    console.log(this.model.endDate.day);
+      };
 
-    this.getArrestsInInterval();
-    this.getCrimesInInterval();
+      // console.log(this.model.endDate.day);
 
-    this.getCrimesHistogram();
-    this.getArrestsHistogram();
+    this.applyGlobalFilters();
   }
 
-  // dateRangeChanged callback function called when the user apply the date range. This is
-  // mandatory callback in this option. There are also optional inputFieldChanged and
-  // calendarViewChanged callbacks.
-  onDateRangeChanged(event: IMyDateRangeModel) {
-    // event properties are: event.beginDate, event.endDate, event.formatted,
-    // event.beginEpoc and event.endEpoc
-    this.startDate = event.beginDate;
-    this.endDate = event.endDate;
-    console.log(this.startDate);
+  applyGlobalFilters(): void{
+
+    console.log("Is this firing?");
+
+    let start_date = this.model.beginDate.year +'-'+ this.model.beginDate.month +'-'+ this.model.beginDate.day;
+
+    let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day;
+
+    var start = new Date(start_date);
+    var end = new Date(end_date);
+
+    console.log(start);
+    console.log(end);
+
+    var diff = Math.abs(start.getTime() - end.getTime());
+
+    var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+
+    console.log("Diff days: " + diffDays);
+
+    if (diffDays <= 30) {
+      this.getArrestsInInterval();
+      this.getCrimesInInterval();
+
+      this.getCrimesHistogram();
+      this.getArrestsHistogram();
+    } else {
+      alert("You must pick an interval within 30 days or less!")
+    }
   }
 
   private myDateRangePickerOptions: IMyOptions = {
@@ -103,7 +122,7 @@ export class DashboardComponent implements OnInit {
       .getCrimesHistogram(start_date, end_date)
       .subscribe(response => {
         this.crimeHistogramData = response;
-        console.log(this.crimeHistogramData);
+        //console.log(this.crimeHistogramData);
       });
   }
 
@@ -116,7 +135,7 @@ export class DashboardComponent implements OnInit {
       .getArrestsHistogram(start_date, end_date)
       .subscribe(response => {
         this.arrestsHistogramData = response;
-        console.log(this.arrestsHistogramData);
+        //console.log(this.arrestsHistogramData);
       });
   }
 }

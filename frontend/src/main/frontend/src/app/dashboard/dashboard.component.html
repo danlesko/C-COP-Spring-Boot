@@ -39,16 +39,16 @@
             <timepicker [(ngModel)]="endTime"></timepicker>
           </div>
           <div class="col-md-3">
-            <div class="dropdown">
-              <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Narrative / Offense
-                <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Thing 1</a></li>
-                <li><a href="#">Thing 2</a></li>
-                <li><a href="#">Thing 3</a></li>
-              </ul>
-            </div>
-            <br />
+            <!--<div class="dropdown">-->
+              <!--<button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">Narrative / Offense-->
+                <!--<span class="caret"></span></button>-->
+              <!--<ul class="dropdown-menu">-->
+                <!--<li><a href="#">Thing 1</a></li>-->
+                <!--<li><a href="#">Thing 2</a></li>-->
+                <!--<li><a href="#">Thing 3</a></li>-->
+              <!--</ul>-->
+            <!--</div>-->
+            <!--<br />-->
             <div class="dropdown">
               <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">City
                 <span class="caret"></span></button>
@@ -59,7 +59,7 @@
               </ul>
             </div>
             <br />
-            <button class="btn btn-block btn-danger" type="button" (click)="getArrestsInInterval(); getCrimesInInterval();">Apply Global Filters</button>
+            <button class="btn btn-block btn-danger" type="button" (click)="applyGlobalFilters();">Apply Global Filters</button>
           </div>
         </div>
       </div>
