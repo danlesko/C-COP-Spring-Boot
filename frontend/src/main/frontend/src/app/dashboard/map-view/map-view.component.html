@@ -41,7 +41,7 @@
       <div class="modal-header">
         <agm-map #largeMap></agm-map>
         <h4 class="modal-title pull-left">Large Map View</h4>
-        <button type="button" class="close pull-right" (click)="lgMapModal.hide(); largeMap.triggerResize()" aria-label="Close">
+        <button type="button" class="close pull-right" (click)="lgMapModal.hide(); largeMap.triggerResize(true)" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -54,7 +54,7 @@
             <agm-map #largeMap
               [latitude] = "39.154743"
               [longitude] = "-77.240515"
-              [zoom]="8">
+              [zoom]="12">
               <agm-marker
                 *ngFor="let m of crimeData"
                 [latitude]="m?.latitude"
