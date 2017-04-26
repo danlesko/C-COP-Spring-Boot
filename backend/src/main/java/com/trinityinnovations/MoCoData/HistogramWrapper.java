@@ -7,16 +7,10 @@ public class HistogramWrapper {
 
   HistogramWrapper(){}
 
-  private Integer count;
+  private Integer arrestCount;
+  private Integer crimeCount;
   private String dateBucket;
 
-  public Integer getCount() {
-    return count;
-  }
-
-  public void setCount(Integer count) {
-    this.count = count;
-  }
 
   public String getDateBucket() {
     return dateBucket;
@@ -25,6 +19,22 @@ public class HistogramWrapper {
   public void setDateBucket(String dateBucket) {
     this.dateBucket = dateBucket;
   }
+
+  public Integer getArrestCount() {
+    return arrestCount;
+  }
+
+  public void setArrestCount(Integer arrestCount) {
+    this.arrestCount = arrestCount;
+  }
+  public Integer getCrimeCount() {
+    return crimeCount;
+  }
+
+  public void setCrimeCount(Integer crimeCount) {
+    this.crimeCount = crimeCount;
+  }
+
 
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import {GoogleChart} from 'angular2-google-chart/directives/angular2-google-chart.directive';
+import { SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-histogram-view',
@@ -12,10 +13,21 @@ export class HistogramViewComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
 
-  ngOnChanges(changes: {[propKey: string]: SimpleChange}){}
-
   @Input() startDate: any;
   @Input() endDate: any;
+  @Input() histogramData: any;
+  title: Array<any> = ["Date", "Arrests", "Crimes"];
+
+  ngOnChanges(changes: SimpleChanges){
+    if(this.histogramData != null) {
+      this.histogramData.unshift(this.title);
+    }
+
+    this.histogram_ChartData = this.histogramData;
+  }
+
+
+
 
   public histogram_ChartData = [
     ['Date', 'Arrests', 'Crimes'],
@@ -37,4 +49,6 @@ export class HistogramViewComponent implements OnInit, OnChanges {
     width: 1000,
     height: 800
   };
+
+
 }

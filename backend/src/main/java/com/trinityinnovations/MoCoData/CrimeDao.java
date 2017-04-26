@@ -35,20 +35,20 @@ public class CrimeDao {
         return crimes;
     }
 
-  public List<HistogramWrapper> getCrimesHistogram(String start_date, String end_date) {
-    List<HistogramWrapper> crimes;
-
-
-    String queryString = "SELECT DATE_FORMAT(MIN(date), '%Y-%m-%d') AS datebucket, " +
-      "COUNT(*) AS count " +
-      "FROM crime WHERE date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'" +
-      "GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)";
-
-    crimes = entityManager.createNativeQuery(queryString).getResultList();
-
-    //List<HistogramWrapper> crimes = session.createSQLQuery(queryString).list();
-    //crimes.removeIf(Objects::isNull);
-    //    session.close();
-    return crimes;
-  }
+//  public List<HistogramWrapper> getCrimesHistogram(String start_date, String end_date) {
+//    List<HistogramWrapper> crimes;
+//
+//
+//    String queryString = "SELECT DATE_FORMAT(MIN(date), '%Y-%m-%d') AS datebucket, " +
+//      "COUNT(*) AS count " +
+//      "FROM crime WHERE date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'" +
+//      "GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)";
+//
+//    crimes = entityManager.createNativeQuery(queryString).getResultList();
+//
+//    //List<HistogramWrapper> crimes = session.createSQLQuery(queryString).list();
+//    //crimes.removeIf(Objects::isNull);
+//    //    session.close();
+//    return crimes;
+//  }
 }

@@ -142,7 +142,8 @@
     </app-pie-view>
   </div>
   <div class="col-md-12">
-    <app-histogram-view [startDate]="startDate" [endDate]="endDate"></app-histogram-view>
+    <app-histogram-view [startDate]="startDate" [endDate]="endDate"
+                        [histogramData]="histogramData"></app-histogram-view>
   </div>
   <div class="col-md-8">
     <app-crime-table-view  [crimeData]="crimeData | filter : 'location' : locationFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter" [locationFilter]="locationFilter" [narrativeFilter]="narrativeFilter" [placeFilter]="placeFilter" ></app-crime-table-view>

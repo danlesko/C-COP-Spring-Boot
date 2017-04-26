@@ -25,8 +25,9 @@ export class DashboardComponent implements OnInit {
   endTime: Date = new Date();
   crimeData : any;
   arrestsData : any;
-  crimeHistogramData : any;
-  arrestsHistogramData : any;
+  //crimeHistogramData : any;
+  //arrestsHistogramData : any;
+  histogramData: any;
 
   locationFilter: any;
   narrativeFilter: any;
@@ -78,8 +79,8 @@ export class DashboardComponent implements OnInit {
       this.getArrestsInInterval();
       this.getCrimesInInterval();
 
-      this.getCrimesHistogram();
-      this.getArrestsHistogram();
+      this.getHistogram();
+      //this.getArrestsHistogram();
     } else {
       alert("You must pick an interval within 30 days or less!")
     }
@@ -113,29 +114,29 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  getCrimesHistogram(): void {
+  getHistogram(): void {
     //this.priorDate.getFullYear()+'-'+(this.priorDate.getMonth()+1)+'-'+this.priorDate.getDate() + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
     let start_date = this.model.beginDate.year +'-'+ this.model.beginDate.month +'-'+ this.model.beginDate.day + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
     // this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate() + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
     let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
     this.dataFetchService
-      .getCrimesHistogram(start_date, end_date)
+      .getHistogram(start_date, end_date)
       .subscribe(response => {
-        this.crimeHistogramData = response;
-        //console.log(this.crimeHistogramData);
+        this.histogramData = response;
+        console.log(this.histogramData);
       });
   }
 
-  getArrestsHistogram(): void {
-    //this.priorDate.getFullYear()+'-'+(this.priorDate.getMonth()+1)+'-'+this.priorDate.getDate() + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
-    let start_date = this.model.beginDate.year +'-'+ this.model.beginDate.month +'-'+ this.model.beginDate.day + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
-    // this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate() + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
-    let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
-    this.dataFetchService
-      .getArrestsHistogram(start_date, end_date)
-      .subscribe(response => {
-        this.arrestsHistogramData = response;
-        //console.log(this.arrestsHistogramData);
-      });
-  }
+  // getArrestsHistogram(): void {
+  //   //this.priorDate.getFullYear()+'-'+(this.priorDate.getMonth()+1)+'-'+this.priorDate.getDate() + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
+  //   let start_date = this.model.beginDate.year +'-'+ this.model.beginDate.month +'-'+ this.model.beginDate.day + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
+  //   // this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate() + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
+  //   let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
+  //   this.dataFetchService
+  //     .getArrestsHistogram(start_date, end_date)
+  //     .subscribe(response => {
+  //       this.arrestsHistogramData = response;
+  //       //console.log(this.arrestsHistogramData);
+  //     });
+  // }
 }
