@@ -53,17 +53,17 @@ public class HistogramDao {
     return histogramData;
   }
 }
-//  SELECT t1.tmstamp, t1.cnt, t2.cnt
+//  SELECT COALESCE(t1.tmstamp, 0) as dateBucket, COALESCE(t1.cnt,0) as arrestCount, COALESCE(t2.cnt, 0) as crimeCount
 //  from
 //  (SELECT DATE_FORMAT(MIN(arrest_date), '%Y/%m/%d') AS tmstamp,
 //  COUNT(*) AS cnt
 //  FROM arrest
-//  WHERE arrest_date BETWEEN "2017-04-02 12:40:00" AND "2017-04-10 12:40:00"
+//  WHERE arrest_date BETWEEN "2017-04-02 12:40:00" AND "2017-04-24 12:40:00"
 //  GROUP BY ROUND(UNIX_TIMESTAMP(arrest_date) / 86400)) t1
 //  LEFT JOIN
 //  (SELECT DATE_FORMAT(MIN(date), '%Y/%m/%d') AS tmstamp,
 //  COUNT(*) AS cnt
 //  FROM crime
-//  WHERE date BETWEEN "2017-04-02 12:40:00" AND "2017-04-10 12:40:00"
+//  WHERE date BETWEEN "2017-04-02 12:40:00" AND "2017-04-24 12:40:00"
 //  GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)) t2
 //  ON t1.tmstamp = t2.tmstamp
