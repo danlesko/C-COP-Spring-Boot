@@ -45,9 +45,9 @@ export class HistogramViewComponent implements OnInit, OnChanges {
   public histogram_ChartOptionsLG  = {
     'title': 'Crimes Vs. Arrests',
     'isStacked': true,
-    chartArea: {'width': '80%', 'height': '80%'},
-    width: 1000,
-    height: 800
+    chartArea: {'width': '100%', 'height': '90%'},
+    width: 1500,
+    height: 750
   };
 
 

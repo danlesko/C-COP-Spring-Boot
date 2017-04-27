@@ -7,7 +7,7 @@ import { DataFetchService } from '../../global/data-fetch/data-fetch.service';
   styleUrls: ['./map-view.component.css'],
   styles: [`
     .sebm-google-map-container {
-       height: 300px;
+       height: 100%;
      }
   `]
 })

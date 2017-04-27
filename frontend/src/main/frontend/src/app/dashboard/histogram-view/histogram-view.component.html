@@ -6,13 +6,13 @@
     <button class="btn btn-default pull-right" (click)="lgHistogramModal.show()" >Max</button>
     <div class="clearfix"></div>
   </div>
-  <div class="panel-body" style="height: 40vh;overflow-y: scroll;">
+  <div class="panel-body" style="height: 25vh; overflow-y: scroll;">
     <div id="histogram_chart" [chartData]="histogram_ChartData" [chartOptions]="histogram_ChartOptions" chartType="ColumnChart" GoogleChart></div>
   </div>
 </div>
 
 <div bsModal #lgHistogramModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
-  <div class="modal-dialog" >
+  <div class="modal-fullscreen" >
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title pull-left">Large Histogram View</h4>
@@ -22,11 +22,11 @@
       </div>
       <div class="modal-body">
         <div class="panel panel-default">
-          <div class="panel-heading">
-            <div class="clearfix"></div>
-          </div>
-          <div class="panel-body" style="height: 80vh;overflow-y: scroll;">
-            <div style="width: 100%; height: 100%" align="center">
+          <!--<div class="panel-heading">-->
+            <!--<div class="clearfix"></div>-->
+          <!--</div>-->
+          <div class="panel-body" style="height: 90vh; overflow-y: scroll;">
+            <div align="center">
               <div id="histogram_chartLG" [chartData]="histogram_ChartData" [chartOptions]="histogram_ChartOptionsLG" chartType="ColumnChart" GoogleChart></div>
             </div>
           </div>
