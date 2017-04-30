@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   constructor( private dataFetchService: DataFetchService) { }
 
   beginDate: any;
+  cities: any;
   endDate: any;
   startTime: Date = new Date();
   endTime: Date = new Date();
@@ -35,6 +36,7 @@ export class DashboardComponent implements OnInit {
   firstNameFilter: any;
   lastNameFilter: any;
   offenseFilter: any;
+  cityFilter: any;
 
   ngOnInit() {
     var today = new Date()
@@ -75,11 +77,15 @@ export class DashboardComponent implements OnInit {
 
     console.log("Diff days: " + diffDays);
 
+    console.log("City Filter: " + this.cityFilter);
+
     if (diffDays <= 30) {
       this.getArrestsInInterval();
       this.getCrimesInInterval();
 
       this.getHistogram();
+
+      this.getCities();
       //this.getArrestsHistogram();
     } else {
       alert("You must pick an interval within 30 days or less!")
@@ -124,6 +130,15 @@ export class DashboardComponent implements OnInit {
       .subscribe(response => {
         this.histogramData = response;
         console.log(this.histogramData);
+      });
+  }
+
+  getCities(): void {
+    this.dataFetchService
+      .getCities()
+      .subscribe(response => {
+        this.cities = response;
+        console.log(this.cities);
       });
   }
 

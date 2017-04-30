@@ -19,6 +19,11 @@ public class CrimeService {
     return crimeDao.getCrimesInInterval(start_date, end_date);
   }
 
+  @Transactional
+  public List<String> getCities() {
+    return crimeDao.getCities();
+  }
+
 //  @Transactional
 //  public List<HistogramWrapper> getCrimesHistogram(String start_date, String end_date) {
 //    return crimeDao.getCrimesHistogram(start_date, end_date);

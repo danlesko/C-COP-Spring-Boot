@@ -24,6 +24,12 @@ public class CrimeController {
     return crimeService.getCrimesInInterval(start_date, end_date);
   }
 
+  @GetMapping(path = "/cities", produces = "application/json")
+  @ResponseBody
+  public List<String> getCities(){
+      return crimeService.getCities();
+  }
+
 //  @GetMapping(path = "/histogram/{start_date}/{end_date}", produces = "application/json")
 //  @ResponseBody
 //  public List<HistogramWrapper> getCrimesHistogram(@PathVariable String start_date, @PathVariable String end_date) {

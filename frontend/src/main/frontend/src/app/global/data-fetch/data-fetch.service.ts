@@ -47,6 +47,13 @@ export class DataFetchService {
       .map(response=> response.json() as any);
   }
 
+  getCities(): Observable<any>{
+    let url = `${this.crimeURL}/cities`;
+    return this.http
+      .get(url)
+      .map(response=> response.json() as any);
+  }
+
   // getCrimesHistogram(start_date, end_date): Observable<any>{
   //   let url = `${this.crimeURL}/histogram/${start_date}/${end_date}`;
   //   return this.http

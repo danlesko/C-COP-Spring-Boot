@@ -49,15 +49,15 @@
               <!--</ul>-->
             <!--</div>-->
             <!--<br />-->
-            <div class="dropdown">
-              <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">City
-                <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Thing 1</a></li>
-                <li><a href="#">Thing 2</a></li>
-                <li><a href="#">Thing 3</a></li>
-              </ul>
+
+            <div class="form-group">
+              <label class="control-label" for="cityList">City Filter</label>
+              <input list="cities" class="form-control" id="cityList" [(ngModel)]="cityFilter" type="text" >
+              <datalist id="cities">
+                <option *ngFor="let city of cities" value="{{city}}">
+              </datalist>
             </div>
+
             <br />
             <button class="btn btn-block btn-danger" type="button" (click)="applyGlobalFilters();">Apply Global Filters</button>
           </div>

@@ -4,12 +4,6 @@ import java.util.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
 import org.springframework.stereotype.Repository;
 
 /**
@@ -33,6 +27,19 @@ public class CrimeDao {
                         + end_date + "\'" + "ORDER BY date DESC", Crime.class).getResultList();
         crimes.removeIf(Objects::isNull);
         return crimes;
+    }
+
+    public List<String> getCities(){
+
+        List<String> city;
+
+        city = entityManager.createNativeQuery(
+          "SELECT DISTINCT city " + "FROM crime WHERE 1").getResultList();
+        //city.removeIf(Objects::isNull);
+
+      Collections.sort(city);
+
+        return city;
     }
 
 //  public List<HistogramWrapper> getCrimesHistogram(String start_date, String end_date) {
