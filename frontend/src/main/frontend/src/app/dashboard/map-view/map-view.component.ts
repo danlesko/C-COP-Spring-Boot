@@ -45,6 +45,12 @@ export class MapViewComponent implements OnInit, OnChanges {
         this.crimeData = response;
       });
   }
+
+  doneLoading : any = false;
+
+  doneLoad() : void {
+    this.doneLoading = true;
+  }
 }
 
 interface marker {

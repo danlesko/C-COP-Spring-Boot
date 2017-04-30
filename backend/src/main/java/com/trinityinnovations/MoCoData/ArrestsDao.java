@@ -18,7 +18,7 @@ public class ArrestsDao {
     this.entityManager = entityManager;
   }
 
-  public List<Arrests> getArrestsInInterval(String start_date, String end_date) {
+  public List<Arrests> getArrestsInInterval(String start_date, String end_date, String city) {
     List<Arrests> arrests;
     arrests = entityManager.createNativeQuery(
       "SELECT * " + "FROM arrest WHERE arrest_date BETWEEN \'" + start_date + "\' AND \'"

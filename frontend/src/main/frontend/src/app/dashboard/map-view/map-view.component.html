@@ -60,12 +60,13 @@
               [zoom]="12">
               <!--icon created by SimpleIcon and retrieved from flaticon.com-->
               <agm-marker
-                *ngFor="let m of crimeData"
+                *ngFor="let m of crimeData; let last = last"
                 [latitude]="m?.latitude"
                 [longitude]="m?.longitude"
                 [label]="C"
                 [iconUrl]="'assets/img/red.png'"
               >
+                <span *ngIf="last">{{doneLoad()}}</span>
                 <agm-info-window>
                   <strong>Crime: {{m?.narrative}}</strong>
                 </agm-info-window>

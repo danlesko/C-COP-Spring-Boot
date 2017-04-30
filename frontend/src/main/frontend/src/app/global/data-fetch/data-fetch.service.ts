@@ -26,14 +26,14 @@ export class DataFetchService {
   private arrestsURL = './ArrestsData';
   private histogramURL = './Histogram';
 
-  getArrestsInInterval(start_date, end_date): Observable<any>{
+  getArrestsInInterval(start_date, end_date, city_filter): Observable<any>{
     let url = `${this.arrestsURL}/${start_date}/${end_date}`;
     return this.http
       .get(url)
       .map(response=> response.json() as any);
   }
 
-  getCrimesInInterval(start_date, end_date): Observable<any>{
+  getCrimesInInterval(start_date, end_date, city_filter): Observable<any>{
     let url = `${this.crimeURL}/${start_date}/${end_date}`;
     return this.http
       .get(url)

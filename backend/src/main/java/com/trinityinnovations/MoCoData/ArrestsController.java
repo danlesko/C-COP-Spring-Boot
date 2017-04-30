@@ -18,10 +18,10 @@ public class ArrestsController {
     @Autowired
     private ArrestsService arrestsService;
 
-    @GetMapping(path = "/{start_date}/{end_date}", produces = "application/json")
+    @GetMapping(path = "/{start_date}/{end_date}/{city}", produces = "application/json")
     @ResponseBody
-    public List<Arrests> getArrestsInInterval(@PathVariable String start_date, @PathVariable String end_date) {
-        return arrestsService.getArrestsInInterval(start_date, end_date);
+    public List<Arrests> getArrestsInInterval(@PathVariable String start_date, @PathVariable String end_date, @PathVariable String city) {
+        return arrestsService.getArrestsInInterval(start_date, end_date, city);
     }
 
 //    @GetMapping(path = "/histogram/{start_date}/{end_date}", produces = "application/json")

@@ -15,8 +15,8 @@ public class ArrestsService {
   private ArrestsDao arrestsDao;
 
   @Transactional
-  public List<Arrests> getArrestsInInterval(String start_date, String end_date) {
-    return arrestsDao.getArrestsInInterval(start_date, end_date);
+  public List<Arrests> getArrestsInInterval(String start_date, String end_date, String city) {
+    return arrestsDao.getArrestsInInterval(start_date, end_date, city);
   }
 
 //  @Transactional

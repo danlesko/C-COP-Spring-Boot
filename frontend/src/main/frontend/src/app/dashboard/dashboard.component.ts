@@ -79,6 +79,10 @@ export class DashboardComponent implements OnInit {
 
     console.log("City Filter: " + this.cityFilter);
 
+    if(this.cityFilter == null || this.cityFilter == '' || this.cityFilter == undefined){
+      this.cityFilter = 'NONE';
+    }
+
     if (diffDays <= 30) {
       this.getArrestsInInterval();
       this.getCrimesInInterval();
@@ -102,7 +106,7 @@ export class DashboardComponent implements OnInit {
     // this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate() + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
     let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
     this.dataFetchService
-      .getArrestsInInterval(start_date, end_date)
+      .getArrestsInInterval(start_date, end_date, this.cityFilter)
       .subscribe(response => {
         this.arrestsData = response;
       });
@@ -114,7 +118,7 @@ export class DashboardComponent implements OnInit {
     // this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate() + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
     let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
     this.dataFetchService
-      .getCrimesInInterval(start_date, end_date)
+      .getCrimesInInterval(start_date, end_date, this.cityFilter)
       .subscribe(response => {
         this.crimeData = response;
       });
@@ -134,6 +138,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getCities(): void {
+
     this.dataFetchService
       .getCities()
       .subscribe(response => {
