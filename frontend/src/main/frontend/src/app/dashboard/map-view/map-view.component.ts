@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { DataFetchService } from '../../global/data-fetch/data-fetch.service';
+declare let L: any;
 
 @Component({
   selector: 'app-map-view',

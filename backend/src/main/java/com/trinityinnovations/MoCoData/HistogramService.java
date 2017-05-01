@@ -15,7 +15,7 @@ public class HistogramService {
   private HistogramDao histogramDao;
 
   @Transactional
-  public List<HistogramWrapper> getHistogram(String start_date, String end_date) {
-    return histogramDao.getHistogram(start_date, end_date);
+  public List<HistogramWrapper> getHistogram(String start_date, String end_date, String city) {
+    return histogramDao.getHistogram(start_date, end_date, city);
   }
 }

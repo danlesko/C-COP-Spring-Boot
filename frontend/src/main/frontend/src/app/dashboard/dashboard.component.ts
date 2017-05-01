@@ -134,7 +134,7 @@ export class DashboardComponent implements OnInit {
     // this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate() + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
     let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
     this.dataFetchService
-      .getHistogram(start_date, end_date)
+      .getHistogram(start_date, end_date, this.cityFilter)
       .subscribe(response => {
         this.histogramData = response;
         console.log(this.histogramData);

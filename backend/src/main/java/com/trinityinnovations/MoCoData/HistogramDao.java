@@ -19,7 +19,7 @@ public class HistogramDao {
   }
 
 
-  public List<HistogramWrapper> getHistogram(String start_date, String end_date) {
+  public List<HistogramWrapper> getHistogram(String start_date, String end_date, String thecity) {
     List<HistogramWrapper> histogramData;
 
 
@@ -32,21 +32,39 @@ public class HistogramDao {
 //      "WHERE date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\' " +
 //      "GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)) t2 " +
 //      "ON t1.tmstamp = t2.tmstamp ";
+    String queryString = "";
 
-    String queryString = "  SELECT t1.tmstamp as dateBucket, t1.cnt as arrestCount, t2.cnt as crimeCount\n" +
-      "  from\n" +
-      "  (SELECT DATE_FORMAT(MIN(arrest_date), '%Y/%m/%d') AS tmstamp,\n" +
-      "  COUNT(*) AS cnt\n" +
-      "  FROM arrest\n" +
-      "  WHERE arrest_date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'\n " +
-      "  GROUP BY ROUND(UNIX_TIMESTAMP(arrest_date) / 86400)) t1\n" +
-      "  LEFT JOIN\n" +
-      "  (SELECT DATE_FORMAT(MIN(date), '%Y/%m/%d') AS tmstamp,\n" +
-      "  COUNT(*) AS cnt\n" +
-      "  FROM crime\n" +
-      "  WHERE date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'\n " +
-      "  GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)) t2\n" +
-      "  ON t1.tmstamp = t2.tmstamp";
+    if (thecity.toUpperCase().equals("NONE")) {
+      queryString = "  SELECT COALESCE(t1.tmstamp, 0) as dateBucket, COALESCE(t1.cnt,0) as arrestCount, COALESCE(t2.cnt, 0) as crimeCount\n" +
+        "  from\n" +
+        "  (SELECT DATE_FORMAT(MIN(arrest_date), '%Y/%m/%d') AS tmstamp,\n" +
+        "  COUNT(*) AS cnt\n" +
+        "  FROM arrest\n" +
+        "  WHERE arrest_date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'\n " +
+        "  GROUP BY ROUND(UNIX_TIMESTAMP(arrest_date) / 86400)) t1\n" +
+        "  LEFT JOIN\n" +
+        "  (SELECT DATE_FORMAT(MIN(date), '%Y/%m/%d') AS tmstamp,\n" +
+        "  COUNT(*) AS cnt\n" +
+        "  FROM crime\n" +
+        "  WHERE date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'\n " +
+        "  GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)) t2\n" +
+        "  ON t1.tmstamp = t2.tmstamp";
+    } else {
+      queryString = "  SELECT COALESCE(t1.tmstamp, 0) as dateBucket, COALESCE(t1.cnt,0) as arrestCount, COALESCE(t2.cnt, 0) as crimeCount\n" +
+        "  from\n" +
+        "  (SELECT DATE_FORMAT(MIN(arrest_date), '%Y/%m/%d') AS tmstamp,\n" +
+        "  COUNT(*) AS cnt\n" +
+        "  FROM arrest\n" +
+        "  WHERE city = \'" + thecity.toUpperCase() + "\' AND arrest_date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'\n " +
+        "  GROUP BY ROUND(UNIX_TIMESTAMP(arrest_date) / 86400)) t1\n" +
+        "  LEFT JOIN\n" +
+        "  (SELECT DATE_FORMAT(MIN(date), '%Y/%m/%d') AS tmstamp,\n" +
+        "  COUNT(*) AS cnt\n" +
+        "  FROM crime\n" +
+        "  WHERE city = \'" + thecity.toUpperCase() + "\' AND date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'\n " +
+        "  GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)) t2\n" +
+        "  ON t1.tmstamp = t2.tmstamp";
+    }
 
     histogramData = entityManager.createNativeQuery(queryString).getResultList();
 

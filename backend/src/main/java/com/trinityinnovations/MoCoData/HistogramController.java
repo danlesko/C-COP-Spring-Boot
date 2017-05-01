@@ -20,9 +20,9 @@ public class HistogramController {
   @Resource(name = "histogramService")
   private HistogramService histogramService;
 
-  @GetMapping(path = "/{start_date}/{end_date}", produces = "application/json")
+  @GetMapping(path = "/{start_date}/{end_date}/{city}", produces = "application/json")
   @ResponseBody
-  public List<HistogramWrapper> getHistogram(@PathVariable String start_date, @PathVariable String end_date) {
-    return histogramService.getHistogram(start_date, end_date);
+  public List<HistogramWrapper> getHistogram(@PathVariable String start_date, @PathVariable String end_date, @PathVariable String city) {
+    return histogramService.getHistogram(start_date, end_date, city);
   }
 }

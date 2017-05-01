@@ -40,8 +40,8 @@ export class DataFetchService {
       .map(response=> response.json() as any);
   }
 
-  getHistogram(start_date, end_date): Observable<any>{
-    let url = `${this.histogramURL}/${start_date}/${end_date}`;
+  getHistogram(start_date, end_date, city): Observable<any>{
+    let url = `${this.histogramURL}/${start_date}/${end_date}/${city}`;
     return this.http
       .get(url)
       .map(response=> response.json() as any);
