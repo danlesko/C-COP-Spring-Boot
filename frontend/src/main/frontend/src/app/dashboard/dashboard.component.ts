@@ -30,12 +30,16 @@ export class DashboardComponent implements OnInit {
   //arrestsHistogramData : any;
   histogramData: any;
 
-  locationFilter: any;
+  idFilter: any;
+  agencyFilter: any;
   narrativeFilter: any;
   placeFilter: any;
+
+
   firstNameFilter: any;
   lastNameFilter: any;
   offenseFilter: any;
+
   cityFilter: any;
 
   ngOnInit() {
@@ -80,7 +84,7 @@ export class DashboardComponent implements OnInit {
     console.log("City Filter: " + this.cityFilter);
 
     if(this.cityFilter == null || this.cityFilter == '' || this.cityFilter == undefined){
-      this.cityFilter = 'NONE';
+      this.cityFilter = "NONE";
     }
 
     if (diffDays <= 30) {

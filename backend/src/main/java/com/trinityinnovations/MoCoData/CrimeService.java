@@ -15,8 +15,8 @@ public class CrimeService {
   private CrimeDao crimeDao;
 
   @Transactional
-  public List<Crime> getCrimesInInterval(String start_date, String end_date) {
-    return crimeDao.getCrimesInInterval(start_date, end_date);
+  public List<Crime> getCrimesInInterval(String start_date, String end_date, String city) {
+    return crimeDao.getCrimesInInterval(start_date, end_date, city);
   }
 
   @Transactional

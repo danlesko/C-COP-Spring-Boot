@@ -20,11 +20,18 @@ public class CrimeDao {
         this.entityManager = entityManager;
     }
 
-    public List<Crime> getCrimesInInterval(String start_date, String end_date) {
+    public List<Crime> getCrimesInInterval(String start_date, String end_date, String thecity) {
         List<Crime> crimes;
-        crimes = entityManager.createNativeQuery(
-                "SELECT * " + "FROM crime WHERE date BETWEEN \'" + start_date + "\' AND \'"
-                        + end_date + "\'" + "ORDER BY date DESC", Crime.class).getResultList();
+        if (thecity.toUpperCase().equals("NONE")) {
+
+          crimes = entityManager.createNativeQuery(
+            "SELECT * " + "FROM crime WHERE date BETWEEN \'" + start_date + "\' AND \'"
+              + end_date + "\'" + " ORDER BY date DESC", Crime.class).getResultList();
+        } else {
+          crimes = entityManager.createNativeQuery(
+            "SELECT * " + "FROM crime WHERE city = \'" + thecity.toUpperCase() + "\' AND date BETWEEN \'" + start_date + "\' AND \'"
+              + end_date + "\'" + " ORDER BY date DESC", Crime.class).getResultList();
+        }
         crimes.removeIf(Objects::isNull);
         return crimes;
     }

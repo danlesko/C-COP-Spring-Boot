@@ -11,7 +11,9 @@
       <thead>
       <tr>
         <th>Date</th>
-        <th>Location</th>
+        <th>Incident ID</th>
+        <th>Agency</th>
+        <th>City</th>
         <th>Narrative</th>
         <th>Place</th>
       </tr>
@@ -19,7 +21,9 @@
       <tbody>
       <tr *ngFor="let crime of crimeData">
         <td>{{crime?.start_date}}</td>
-        <td>{{crime?.location}}</td>
+        <td>{{crime?.incident_id}}</td>
+        <td>{{crime?.agency}}</td>
+        <td>{{crime?.city}}</td>
         <td>{{crime?.narrative}}</td>
         <td>{{crime?.place}}</td>
       </tr>
@@ -47,7 +51,9 @@
               <thead>
               <tr>
                 <th>Date</th>
-                <th>Location</th>
+                <th>Incident ID</th>
+                <th>Agency</th>
+                <th>City</th>
                 <th>Narrative</th>
                 <th>Place</th>
               </tr>
@@ -55,7 +61,9 @@
               <tbody>
               <tr *ngFor="let crime of crimeData">
                 <td>{{crime?.start_date}}</td>
-                <td>{{crime?.location}}</td>
+                <td>{{crime?.incident_id}}</td>
+                <td>{{crime?.agency}}</td>
+                <td>{{crime?.city}}</td>
                 <td>{{crime?.narrative}}</td>
                 <td>{{crime?.place}}</td>
               </tr>

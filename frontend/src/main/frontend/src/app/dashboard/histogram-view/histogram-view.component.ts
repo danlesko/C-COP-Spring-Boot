@@ -26,9 +26,6 @@ export class HistogramViewComponent implements OnInit, OnChanges {
     this.histogram_ChartData = this.histogramData;
   }
 
-
-
-
   public histogram_ChartData = [
     ['Date', 'Arrests', 'Crimes'],
     ['Monday', 20, 80],

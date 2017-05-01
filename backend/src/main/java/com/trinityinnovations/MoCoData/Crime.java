@@ -13,6 +13,7 @@ public class Crime implements Serializable {
   @Column(name = "incident_id", nullable = false)
   private String incident_id;
 
+  @Transient
   @Column(name = "case_number")
   private String case_number;
 
@@ -20,15 +21,18 @@ public class Crime implements Serializable {
   @Column(name = "date")
   private String date;
 
+  @Transient
   @Column(name = "incident_type")
   private String incident_type;
 
   @Column(name = "narrative")
   private String narrative;
 
+  @Transient
   @Column(name = "district")
   private String district;
 
+  @Transient
   @Column(name = "location")
   private String location;
 
@@ -47,12 +51,15 @@ public class Crime implements Serializable {
   @Column(name = "place")
   private String place;
 
+  @Transient
   @Column(name = "sector")
   private String sector;
 
+  @Transient
   @Column(name = "beat")
   private String beat;
 
+  @Transient
   @Column(name = "pra")
   private String pra;
 
@@ -62,9 +69,11 @@ public class Crime implements Serializable {
   @Column(name = "end_date")
   private String end_date;
 
+  @Transient
   @Column(name = "police_district_number")
   private String police_district_number;
 
+  @Transient
   @Column(name = "geolocation_city")
   private String geolocation_city;
 
@@ -74,15 +83,19 @@ public class Crime implements Serializable {
   @Column(name = "longitude")
   private double longitude;
 
+  @Transient
   @Column(name = "geolocation_address")
   private String geolocation_address;
 
+  @Transient
   @Column(name = "address_number")
   private String address_number;
 
+  @Transient
   @Column(name = "geolocation_zip")
   private String geolocation_zip;
 
+  @Transient
   @Column(name = "geolocation_state")
   private String geolocation_state;
 

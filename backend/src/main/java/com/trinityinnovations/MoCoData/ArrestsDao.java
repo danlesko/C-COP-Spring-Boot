@@ -18,11 +18,20 @@ public class ArrestsDao {
     this.entityManager = entityManager;
   }
 
-  public List<Arrests> getArrestsInInterval(String start_date, String end_date, String city) {
+  public List<Arrests> getArrestsInInterval(String start_date, String end_date, String thecity) {
     List<Arrests> arrests;
-    arrests = entityManager.createNativeQuery(
-      "SELECT * " + "FROM arrest WHERE arrest_date BETWEEN \'" + start_date + "\' AND \'"
-        + end_date + "\'" + "ORDER BY arrest_date DESC", Arrests.class).getResultList();
+    //System.out.print("The city var: " + thecity + "\n");
+
+    if (thecity.toUpperCase().equals("NONE")) {
+      //System.out.print("The city var: " + thecity + "\n");
+      arrests = entityManager.createNativeQuery(
+        "SELECT * " + "FROM arrest WHERE arrest_date BETWEEN \'" + start_date + "\' AND \'"
+          + end_date + "\'" + " ORDER BY arrest_date DESC", Arrests.class).getResultList();
+    } else {
+      arrests = entityManager.createNativeQuery(
+        "SELECT * " + "FROM arrest WHERE city = \'" + thecity.toUpperCase() + "\' AND arrest_date BETWEEN \'" + start_date + "\' AND \'"
+          + end_date + "\'" + " ORDER BY arrest_date DESC", Arrests.class).getResultList();
+    }
     arrests.removeIf(Objects::isNull);
     return arrests;
   }
