@@ -22,9 +22,11 @@
       </div>
       <div class="modal-body">
         <div class="panel panel-default">
-          <!--<div class="panel-heading">-->
-            <!--<div class="clearfix"></div>-->
-          <!--</div>-->
+          <div class="panel-heading">
+            <!--<div class="pull-left" style="font-size: 1.5em;">
+              Histogram View
+            </div>-->
+          </div>
           <div class="panel-body" style="height: 90vh; overflow-y: scroll;">
             <div align="center">
               <div id="histogram_chartLG" [chartData]="histogram_ChartData" [chartOptions]="histogram_ChartOptionsLG" chartType="ColumnChart" GoogleChart></div>

@@ -32,6 +32,7 @@ public class HistogramDao {
 //      "WHERE date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\' " +
 //      "GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)) t2 " +
 //      "ON t1.tmstamp = t2.tmstamp ";
+
     String queryString = "";
 
     if (thecity.toUpperCase().equals("NONE")) {

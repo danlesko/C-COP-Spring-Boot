@@ -25,6 +25,7 @@ export class DataFetchService {
   private crimeURL = './CrimeData';
   private arrestsURL = './ArrestsData';
   private histogramURL = './Histogram';
+  private pieURL = './Pie';
 
   getArrestsInInterval(start_date, end_date, city_filter): Observable<any>{
     let url = `${this.arrestsURL}/${start_date}/${end_date}/${city_filter}`;
@@ -53,6 +54,21 @@ export class DataFetchService {
       .get(url)
       .map(response=> response.json() as any);
   }
+
+  getArrestPie(start_date, end_date, city_filter): Observable<any>{
+    let url = `${this.pieURL}/Arrest/${start_date}/${end_date}/${city_filter}`;
+    return this.http
+        .get(url)
+        .map(response=> response.json() as any);
+  }
+
+  getCrimePie(start_date, end_date, city_filter): Observable<any>{
+    let url = `${this.pieURL}/Crime/${start_date}/${end_date}/${city_filter}`;
+    return this.http
+        .get(url)
+        .map(response=> response.json() as any);
+  }
+
 
   // getCrimesHistogram(start_date, end_date): Observable<any>{
   //   let url = `${this.crimeURL}/histogram/${start_date}/${end_date}`;

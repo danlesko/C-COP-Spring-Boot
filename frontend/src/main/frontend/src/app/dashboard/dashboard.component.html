@@ -135,23 +135,27 @@
 
 <div >
   <div class="col-md-8">
-    <app-map-view [crimeData]="crimeData | filter : 'incident_id' : idFilter | filter: 'agency' : agencyFilter | filter : 'place' : placeFilter"
+    <app-map-view [crimeData]="crimeData | filter : 'incident_id' : idFilter | filter: 'agency' : agencyFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter"
                   [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter"></app-map-view>
   </div>
   <div class="col-md-4">
     <app-pie-view [startDate]="startDate" [endDate]="endDate"
-                  [crimeData]="crimeData | filter : 'incident_id' : idFilter | filter: 'agency' : agencyFilter | filter : 'place' : placeFilter"
-                  [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter">
+                  [crimeData]="crimeData | filter : 'incident_id' : idFilter | filter: 'agency' : agencyFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter"
+                  [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter"
+                  [crimePieData]="crimePieData"
+                  [arrestPieData]="arrestPieData">
     </app-pie-view>
   </div>
-  <div class="col-md-12">
-    <app-histogram-view [startDate]="startDate" [endDate]="endDate"
-                        [histogramData]="histogramData"></app-histogram-view>
-  </div>
+
   <div class="col-md-8">
-    <app-crime-table-view  [crimeData]="crimeData | filter : 'incident_id' : idFilter | filter: 'agency' : agencyFilter | filter : 'place' : placeFilter"></app-crime-table-view>
+    <app-crime-table-view  [crimeData]="crimeData | filter : 'incident_id' : idFilter | filter: 'agency' : agencyFilter | filter: 'narrative' : narrativeFilter |  filter : 'place' : placeFilter"></app-crime-table-view>
   </div>
   <div class="col-md-4">
     <app-arrest-table-view [arrestsData]="arrestsData | filter : 'last_name' : lastNameFilter| filter : 'first_name' : firstNameFilter | filter : 'offense' : offenseFilter"></app-arrest-table-view>
+  </div>
+
+  <div class="col-md-12">
+    <app-histogram-view [startDate]="startDate" [endDate]="endDate"
+                        [histogramData]="histogramData"></app-histogram-view>
   </div>
 </div>

@@ -26,6 +26,33 @@ export class PieViewComponent implements OnInit, OnChanges {
       ['Arrests',     this.numArrests],
       ['Crime',     this.numCrimes]
     ];
+
+
+
+
+    let crimeData = null;
+    let arrestData = null;
+
+    if (this.arrestPieData != null) {
+      //arrestData.unshift(this.arrestPieData);
+      arrestData = this.arrestPieData.slice();
+      arrestData.unshift(this.title);
+      this.arrestPie_ChartData = arrestData;
+    }
+
+    if (this.crimePieData != null) {
+      //crimeData.unshift(this.crimePieData);
+      crimeData = this.crimePieData.slice();
+      crimeData.unshift(this.title);
+      this.crimePie_ChartData = crimeData;
+    }
+
+    console.log(crimeData);
+    //console.log(this.arrestPieData);
+
+
+
+    //this.histogram_ChartData = this.histogramData;
   }
 
   @Input() startDate: any;
@@ -40,8 +67,19 @@ export class PieViewComponent implements OnInit, OnChanges {
   @Input() narrativeFilter: any;
   @Input() placeFilter: any;
 
-  numCrimes : any; // = Object.keys(this.crimeData).length;
-  numArrests : any; // = Object.keys(this.crimeData).length;
+  @Input() crimePieData: any;
+  @Input() arrestPieData: any;
+
+  pieSelection: number = 1;
+
+  pieSelect(whichPie: number): void{
+    this.pieSelection = whichPie;
+  }
+
+  numCrimes : any = 0; // = Object.keys(this.crimeData).length;
+  numArrests : any = 0; // = Object.keys(this.crimeData).length;
+
+  title: Array<any> = ["Description", "Count"];
 
   public pie_ChartData = [
     ['Crime vs Arrests', 'Occurrences'],
@@ -58,6 +96,50 @@ export class PieViewComponent implements OnInit, OnChanges {
 
   public pie_ChartOptionsLG  = {
     'title': 'Crimes',
+    chartArea: {'width': '80%', 'height': '80%'},
+    width: 1000,
+    height: 800
+  };
+
+  /* Crime Pie */
+
+  public crimePie_ChartData = [
+    ['Crime vs Arrests', 'Occurrences'],
+    ['Arrests',     20],
+    ['Crime',     80]
+  ];
+
+  public crimePie_ChartOptions  = {
+    'title': 'Crime Count',
+    chartArea: {'width': '80%', 'height': '80%'},
+    width: 500,
+    height: 400
+  };
+
+  public crimePie_ChartOptionsLG  = {
+    'title': 'Crime Count',
+    chartArea: {'width': '80%', 'height': '80%'},
+    width: 1000,
+    height: 800
+  };
+
+  /* Arrest Pie */
+
+  public arrestPie_ChartData = [
+    ['Crime vs Arrests', 'Occurrences'],
+    ['Arrests',     20],
+    ['Crime',     80]
+  ];
+
+  public arrestPie_ChartOptions  = {
+    'title': 'Arrest Count',
+    chartArea: {'width': '80%', 'height': '80%'},
+    width: 500,
+    height: 400
+  };
+
+  public arrestPie_ChartOptionsLG  = {
+    'title': 'Arrest Count',
     chartArea: {'width': '80%', 'height': '80%'},
     width: 1000,
     height: 800

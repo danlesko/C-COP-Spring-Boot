@@ -1,19 +1,19 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <!--<div class="pull-left" style="font-size: 1.5em;">-->
-      <!--Map View-->
-    <!--</div>-->
-    <button class="btn btn-default pull-right" (click)="lgMapModal.show()" >Max</button>
+    <div class="pull-left" style="font-size: 1.5em;">
+      Map View
+    </div>
+    <button class="btn btn-default pull-right" (click)="lgMapModal.show(); lgMapModal.hide(); lgMapModal.show();" >Max</button>
     <div class="clearfix"></div>
   </div>
   <div class="panel-body" style="height: 40vh;overflow-y: scroll;">
-    <!--<agm-map
+    <agm-map
       [latitude] = "39.154743"
       [longitude] = "-77.240515"
       [zoom]="8">
-      &lt;!&ndash;icon created by SimpleIcon and retrieved from flaticon.com&ndash;&gt;
+      <!--icon created by SimpleIcon and retrieved from flaticon.com-->
       <agm-marker
-        *ngFor="let m of crimeData"
+        *ngFor="let m of crimeData | slice:0:100; let i=index"
         [latitude]="m?.latitude"
         [longitude]="m?.longitude"
         [label]="C"
@@ -23,9 +23,9 @@
           <strong>Crime: {{m?.narrative}}</strong>
         </agm-info-window>
       </agm-marker>
-      &lt;!&ndash;icon created by SimpleIcon and retrieved from flaticon.com&ndash;&gt;
+      <!--icon created by SimpleIcon and retrieved from flaticon.com-->
       <agm-marker
-        *ngFor="let a of arrestsData"
+        *ngFor="let a of arrestsData | slice:0:100; let i=index"
         [latitude]="a?.latitude"
         [longitude]="a?.longitude"
         [label]="A"
@@ -35,7 +35,7 @@
           <strong>Arrest: {{a?.offense}}</strong>
         </agm-info-window>
       </agm-marker>
-    </agm-map>-->
+    </agm-map>
   </div>
 </div>
 
@@ -43,24 +43,26 @@
   <div class="modal-fullscreen" >
     <div class="modal-content">
       <div class="modal-header" style="height: 5vh;">
-        <!--<h4 class="modal-title pull-left">Large Map View</h4>-->
+        <h4 class="modal-title pull-left">Large Map View</h4>
         <button type="button" class="close pull-right" (click)="lgMapModal.hide(); largeMap.triggerResize(true)" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="panel panel-default">
-          <!--<div class="panel-heading">-->
-            <!--<div class="clearfix"></div>-->
-          <!--</div>-->
+          <div class="panel-heading">
+            <!--<div class="pull-left" style="font-size: 1.5em;">
+              Map View
+            </div>-->
+          </div>
           <div class="panel-body" style="height: 90vh; overflow-y: scroll;">
-            <!--<agm-map #largeMap
+            <agm-map #largeMap
               [latitude] = "39.154743"
               [longitude] = "-77.240515"
               [zoom]="12">
-              &lt;!&ndash;icon created by SimpleIcon and retrieved from flaticon.com&ndash;&gt;
+              <!--icon created by SimpleIcon and retrieved from flaticon.com-->
               <agm-marker
-                *ngFor="let m of crimeData; let last = last"
+                *ngFor="let m of crimeData | slice:0:100; let i=index"
                 [latitude]="m?.latitude"
                 [longitude]="m?.longitude"
                 [label]="C"
@@ -71,9 +73,9 @@
                   <strong>Crime: {{m?.narrative}}</strong>
                 </agm-info-window>
               </agm-marker>
-              &lt;!&ndash;icon created by SimpleIcon and retrieved from flaticon.com&ndash;&gt;
+              <!--icon created by SimpleIcon and retrieved from flaticon.com-->
               <agm-marker
-                *ngFor="let a of arrestsData"
+                *ngFor="let a of arrestsData | slice:0:100; let i=index"
                 [latitude]="a?.latitude"
                 [longitude]="a?.longitude"
                 [label]="A"
@@ -83,7 +85,7 @@
                   <strong>Arrest: {{a?.offense}}</strong>
                 </agm-info-window>
               </agm-marker>
-            </agm-map>-->
+            </agm-map>
           </div>
         </div>
       </div>

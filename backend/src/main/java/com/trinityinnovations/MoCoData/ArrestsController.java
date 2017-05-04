@@ -24,6 +24,8 @@ public class ArrestsController {
         return arrestsService.getArrestsInInterval(start_date, end_date, city);
     }
 
+
+
 //    @GetMapping(path = "/histogram/{start_date}/{end_date}", produces = "application/json")
 //    @ResponseBody
 //    public List<HistogramWrapper> getHistogram(@PathVariable String start_date, @PathVariable String end_date) {

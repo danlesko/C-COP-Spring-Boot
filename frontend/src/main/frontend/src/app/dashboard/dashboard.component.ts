@@ -29,6 +29,9 @@ export class DashboardComponent implements OnInit {
   //crimeHistogramData : any;
   //arrestsHistogramData : any;
   histogramData: any;
+  crimePieData: any;
+  arrestPieData: any;
+
 
   idFilter: any;
   agencyFilter: any;
@@ -94,6 +97,9 @@ export class DashboardComponent implements OnInit {
       this.getHistogram();
 
       this.getCities();
+
+      this.getCrimePie();
+      this.getArrestPie();
       //this.getArrestsHistogram();
     } else {
       alert("You must pick an interval within 30 days or less!")
@@ -149,6 +155,32 @@ export class DashboardComponent implements OnInit {
         this.cities = response;
         console.log(this.cities);
       });
+  }
+
+  getArrestPie(): void {
+    //this.priorDate.getFullYear()+'-'+(this.priorDate.getMonth()+1)+'-'+this.priorDate.getDate() + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
+    let start_date = this.model.beginDate.year +'-'+ this.model.beginDate.month +'-'+ this.model.beginDate.day + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
+    // this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate() + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
+    let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
+    this.dataFetchService
+        .getArrestPie(start_date, end_date, this.cityFilter)
+        .subscribe(response => {
+          this.arrestPieData = response;
+          //console.log(this.arrestPieData);
+        });
+  }
+
+  getCrimePie(): void {
+    //this.priorDate.getFullYear()+'-'+(this.priorDate.getMonth()+1)+'-'+this.priorDate.getDate() + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
+    let start_date = this.model.beginDate.year +'-'+ this.model.beginDate.month +'-'+ this.model.beginDate.day + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
+    // this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate() + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
+    let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
+    this.dataFetchService
+        .getCrimePie(start_date, end_date, this.cityFilter)
+        .subscribe(response => {
+          this.crimePieData = response;
+          //console.log(this.crimePieData);
+        });
   }
 
   // getArrestsHistogram(): void {

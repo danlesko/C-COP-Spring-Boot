@@ -23,6 +23,7 @@ export class HistogramViewComponent implements OnInit, OnChanges {
       this.histogramData.unshift(this.title);
     }
 
+    console.log(this.histogramData);
     this.histogram_ChartData = this.histogramData;
   }
 
@@ -36,7 +37,7 @@ export class HistogramViewComponent implements OnInit, OnChanges {
 
   public histogram_ChartOptions  = {
     'title': 'Crimes Vs. Arrests',
-    'isStacked': true
+    'isStacked': false
   };
 
   public histogram_ChartOptionsLG  = {

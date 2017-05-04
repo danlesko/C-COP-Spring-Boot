@@ -1,14 +1,37 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <!--<div class="pull-left" style="font-size: 1.5em;">-->
-      <!--Pie View-->
-    <!--</div>-->
+    <div class="pull-left" style="font-size: 1.5em;">
+      Pie Chart View
+    </div>
+    <div class="btn-group pull-right">
+      <a href="#" class="btn btn-default">View Pie Charts</a>
+      <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li class="pointer"><a (click)="pieSelect(1)">Crimes Vs. Arrests</a></li>
+        <li class="pointer"><a (click)="pieSelect(2)">Crime Count</a></li>
+        <li class="pointer"><a (click)="pieSelect(3)">Arrest Count</a></li>
+      </ul>
+    </div>
     <button class="btn btn-default pull-right" (click)="lgPieModal.show()">Max</button>
     <div class="clearfix"></div>
   </div>
   <div class="panel-body" style="height: 40vh;overflow-y: scroll;">
-    <div style="width: 100%; height: 100%">
-      <div id="pie_chart" [chartData]="pie_ChartData" [chartOptions]="pie_ChartOptions" chartType="PieChart" GoogleChart></div>
+    <div class="tab-content">
+      <div *ngIf="pieSelection == 1">
+        <div style="width: 100%; height: 100%">
+          <div id="pie_chart" [chartData]="pie_ChartData" [chartOptions]="pie_ChartOptions" chartType="PieChart" GoogleChart></div>
+        </div>
+      </div>
+      <div *ngIf="pieSelection == 2">
+        <div style="width: 100%; height: 100%">
+          <div id="crimePie_chart" [chartData]="crimePie_ChartData" [chartOptions]="crimePie_ChartOptions" chartType="PieChart" GoogleChart></div>
+        </div>
+      </div>
+      <div *ngIf="pieSelection == 3">
+        <div style="width: 100%; height: 100%">
+          <div id="arrestPie_chart" [chartData]="arrestPie_ChartData" [chartOptions]="arrestPie_ChartOptions" chartType="PieChart" GoogleChart></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -17,7 +40,7 @@
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header">
-        <!--<h4 class="modal-title pull-left">Large Pie View</h4>-->
+        <h4 class="modal-title pull-left">Large Pie View</h4>
         <button type="button" class="close pull-right" (click)="lgPieModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -25,11 +48,37 @@
       <div class="modal-body">
         <div class="panel panel-default">
           <div class="panel-heading">
+            <!--<div class="pull-left" style="font-size: 1.5em;">
+              Pie Chart View
+            </div>-->
+            <div class="btn-group pull-right">
+              <a href="#" class="btn btn-default">View Pie Charts</a>
+              <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="pointer"><a (click)="pieSelect(1)">Crimes Vs. Arrests</a></li>
+                <li class="pointer"><a (click)="pieSelect(2)">Crime Count</a></li>
+                <li class="pointer"><a (click)="pieSelect(3)">Arrest Count</a></li>
+              </ul>
+            </div>
             <div class="clearfix"></div>
           </div>
           <div class="panel-body" style="height: 80vh;overflow-y: scroll;">
-            <div style="width: 100%; height: 100%" align="center">
-              <div id="pie_chartLG" [chartData]="pie_ChartData" [chartOptions]="pie_ChartOptionsLG" chartType="PieChart" GoogleChart></div>
+            <div class="tab-content">
+              <div *ngIf="pieSelection == 1">
+                <div style="width: 100%; height: 100%">
+                  <div id="pie_chartLG" [chartData]="pie_ChartData" [chartOptions]="pie_ChartOptionsLG" chartType="PieChart" GoogleChart></div>
+                </div>
+              </div>
+              <div *ngIf="pieSelection == 2">
+                <div style="width: 100%; height: 100%">
+                  <div id="crimePie_chartLG" [chartData]="crimePie_ChartData" [chartOptions]="crimePie_ChartOptionsLG" chartType="PieChart" GoogleChart></div>
+                </div>
+              </div>
+              <div *ngIf="pieSelection == 3">
+                <div style="width: 100%; height: 100%">
+                  <div id="arrestPie_chartLG" [chartData]="arrestPie_ChartData" [chartOptions]="arrestPie_ChartOptionsLG" chartType="PieChart" GoogleChart></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
