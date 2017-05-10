@@ -3,15 +3,15 @@
     <div class="pull-left" style="font-size: 1.5em;">
       Map View
     </div>
-    <button class="btn btn-default pull-right" (click)="lgMapModal.show(); lgMapModal.hide(); lgMapModal.show();" >Max</button>
+    <button class="btn btn-default pull-right disabled"  >Max</button> <!--(click)="lgMapModal.show();-->
     <div class="clearfix"></div>
   </div>
-  <div class="panel-body" style="height: 40vh;overflow-y: scroll;">
-    <agm-map
+  <div class="panel-body" style="height: 40vh;overflow-y: scroll;" id="map">
+    <!--<agm-map
       [latitude] = "39.154743"
       [longitude] = "-77.240515"
       [zoom]="8">
-      <!--icon created by SimpleIcon and retrieved from flaticon.com-->
+      &lt;!&ndash;icon created by SimpleIcon and retrieved from flaticon.com&ndash;&gt;
       <agm-marker
         *ngFor="let m of crimeData | slice:0:100; let i=index"
         [latitude]="m?.latitude"
@@ -23,7 +23,7 @@
           <strong>Crime: {{m?.narrative}}</strong>
         </agm-info-window>
       </agm-marker>
-      <!--icon created by SimpleIcon and retrieved from flaticon.com-->
+      &lt;!&ndash;icon created by SimpleIcon and retrieved from flaticon.com&ndash;&gt;
       <agm-marker
         *ngFor="let a of arrestsData | slice:0:100; let i=index"
         [latitude]="a?.latitude"
@@ -35,16 +35,19 @@
           <strong>Arrest: {{a?.offense}}</strong>
         </agm-info-window>
       </agm-marker>
-    </agm-map>
+    </agm-map>-->
+
   </div>
 </div>
+
+<!--<div id="map"></div>-->
 
 <div bsModal #lgMapModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" >
   <div class="modal-fullscreen" >
     <div class="modal-content">
       <div class="modal-header" style="height: 5vh;">
         <h4 class="modal-title pull-left">Large Map View</h4>
-        <button type="button" class="close pull-right" (click)="lgMapModal.hide(); largeMap.triggerResize(true)" aria-label="Close">
+        <button type="button" class="close pull-right" (click)="lgMapModal.hide();" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -55,12 +58,12 @@
               Map View
             </div>-->
           </div>
-          <div class="panel-body" style="height: 90vh; overflow-y: scroll;">
-            <agm-map #largeMap
+          <div class="panel-body" style="height: 90vh; overflow-y: scroll;" id="mapLG">
+            <!--<agm-map #largeMap
               [latitude] = "39.154743"
               [longitude] = "-77.240515"
               [zoom]="12">
-              <!--icon created by SimpleIcon and retrieved from flaticon.com-->
+              &lt;!&ndash;icon created by SimpleIcon and retrieved from flaticon.com&ndash;&gt;
               <agm-marker
                 *ngFor="let m of crimeData | slice:0:100; let i=index"
                 [latitude]="m?.latitude"
@@ -73,7 +76,7 @@
                   <strong>Crime: {{m?.narrative}}</strong>
                 </agm-info-window>
               </agm-marker>
-              <!--icon created by SimpleIcon and retrieved from flaticon.com-->
+              &lt;!&ndash;icon created by SimpleIcon and retrieved from flaticon.com&ndash;&gt;
               <agm-marker
                 *ngFor="let a of arrestsData | slice:0:100; let i=index"
                 [latitude]="a?.latitude"
@@ -85,7 +88,7 @@
                   <strong>Arrest: {{a?.offense}}</strong>
                 </agm-info-window>
               </agm-marker>
-            </agm-map>
+            </agm-map>-->
           </div>
         </div>
       </div>

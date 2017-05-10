@@ -46,6 +46,6 @@ export class ArrestTableViewComponent implements OnInit, OnChanges {
   }
 
   showData(): void{
-    console.log(JSON.stringify(this.arrestsData));
+    //console.log(JSON.stringify(this.arrestsData));
   }
 }

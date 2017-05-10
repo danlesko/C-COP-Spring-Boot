@@ -26,6 +26,12 @@
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
+
+#map {
+  width: 960px;
+  height: 500px;
+}
+
 @-webkit-keyframes load4 {
   0%,
   100% {

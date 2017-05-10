@@ -19,8 +19,8 @@ export class PieViewComponent implements OnInit, OnChanges {
     if (this.arrestsData != null) {
       this.numArrests = this.arrestsData.length;
     }
-    console.log("Number of crimes changed to: " + this.numCrimes);
-    console.log("Number of arrests changed to: " + this.numArrests);
+    //console.log("Number of crimes changed to: " + this.numCrimes);
+    //console.log("Number of arrests changed to: " + this.numArrests);
     this.pie_ChartData = [
       ['Crime vs Arrests', 'Occurrences'],
       ['Arrests',     this.numArrests],
@@ -47,7 +47,7 @@ export class PieViewComponent implements OnInit, OnChanges {
       this.crimePie_ChartData = crimeData;
     }
 
-    console.log(crimeData);
+    //console.log(crimeData);
     //console.log(this.arrestPieData);
 
 

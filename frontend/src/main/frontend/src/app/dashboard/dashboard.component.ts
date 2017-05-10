@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
 
   applyGlobalFilters(): void{
 
-    console.log("Is this firing?");
+    //console.log("Is this firing?");
 
     let start_date = this.model.beginDate.year +'-'+ this.model.beginDate.month +'-'+ this.model.beginDate.day;
 
@@ -75,16 +75,16 @@ export class DashboardComponent implements OnInit {
     var start = new Date(start_date);
     var end = new Date(end_date);
 
-    console.log(start);
-    console.log(end);
+    //console.log(start);
+    //console.log(end);
 
     var diff = Math.abs(start.getTime() - end.getTime());
 
     var diffDays = Math.ceil(diff / (1000 * 3600 * 24));
 
-    console.log("Diff days: " + diffDays);
+    //console.log("Diff days: " + diffDays);
 
-    console.log("City Filter: " + this.cityFilter);
+    //console.log("City Filter: " + this.cityFilter);
 
     if(this.cityFilter == null || this.cityFilter == '' || this.cityFilter == undefined){
       this.cityFilter = "NONE";
@@ -119,6 +119,7 @@ export class DashboardComponent implements OnInit {
       .getArrestsInInterval(start_date, end_date, this.cityFilter)
       .subscribe(response => {
         this.arrestsData = response;
+        //console.log(this.arrestsData);
       });
   }
 
@@ -131,6 +132,7 @@ export class DashboardComponent implements OnInit {
       .getCrimesInInterval(start_date, end_date, this.cityFilter)
       .subscribe(response => {
         this.crimeData = response;
+        //console.log(this.crimeData);
       });
   }
 
@@ -143,7 +145,7 @@ export class DashboardComponent implements OnInit {
       .getHistogram(start_date, end_date, this.cityFilter)
       .subscribe(response => {
         this.histogramData = response;
-        console.log(this.histogramData);
+        //console.log(this.histogramData);
       });
   }
 
@@ -153,7 +155,7 @@ export class DashboardComponent implements OnInit {
       .getCities()
       .subscribe(response => {
         this.cities = response;
-        console.log(this.cities);
+        //console.log(this.cities);
       });
   }
 

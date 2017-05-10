@@ -23,7 +23,7 @@ export class HistogramViewComponent implements OnInit, OnChanges {
       this.histogramData.unshift(this.title);
     }
 
-    console.log(this.histogramData);
+    //console.log(this.histogramData);
     this.histogram_ChartData = this.histogramData;
   }
 
