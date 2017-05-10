@@ -13,6 +13,8 @@ import javax.annotation.Resource;
 /**
  * Created by Dan Lesko on 4/9/2017.
  */
+
+// Rest API to get Histogram Data
 @Controller
 @RequestMapping("/Histogram")
 public class HistogramController {
@@ -20,6 +22,7 @@ public class HistogramController {
   @Resource(name = "histogramService")
   private HistogramService histogramService;
 
+  // GET HTTP rest API
   @GetMapping(path = "/{start_date}/{end_date}/{city}", produces = "application/json")
   @ResponseBody
   public List<HistogramWrapper> getHistogram(@PathVariable String start_date, @PathVariable String end_date, @PathVariable String city) {

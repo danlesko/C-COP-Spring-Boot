@@ -1,3 +1,6 @@
+// Service that helps with our datepicker
+// Created by Dan Lesko
+
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';

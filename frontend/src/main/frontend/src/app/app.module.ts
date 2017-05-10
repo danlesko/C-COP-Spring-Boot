@@ -1,4 +1,6 @@
-// Imports for Google Maps implemented by Joshua Sharo
+// Imports needed by the application are listed here
+// Extended by Dan Lesko, Rachel Newkirk, and Josh Sharo
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';

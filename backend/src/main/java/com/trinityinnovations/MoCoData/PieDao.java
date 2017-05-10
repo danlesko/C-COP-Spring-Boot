@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by Dan Lesko on 4/9/2017.
  */
+
+// Class to access the database itself and make queries for Pie chart
 @Repository
 public class PieDao {
 

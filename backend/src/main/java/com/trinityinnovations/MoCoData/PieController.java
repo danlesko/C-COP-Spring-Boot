@@ -20,6 +20,8 @@ public class PieController {
   @Resource(name = "pieService")
   private PieService pieService;
 
+  // GET HTTP rest API to get both crime and arrest data for pie charts
+
   @GetMapping(path = "/Arrest/{start_date}/{end_date}/{city}", produces = "application/json")
   @ResponseBody
   public List<PieWrapper> getArrestPie(@PathVariable String start_date, @PathVariable String end_date, @PathVariable String city) {

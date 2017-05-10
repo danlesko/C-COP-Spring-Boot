@@ -1,5 +1,5 @@
-// Based on template code
-// Data transfer implemented by Dan Lesko
+// Arrest table
+// Implemented by Dan Lesko and Rachel Newkirk
 
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { DataFetchService } from "../../global/data-fetch/data-fetch.service";
@@ -16,6 +16,10 @@ export class ArrestTableViewComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
 
+  changeLog: string[] = [];
+
+  // function that listens for changes, right now just template code is used here as this function doesn't need to do anything for us.
+  // however it must stay in order for changes to be "listened" for
   ngOnChanges(changes: {[propKey: string]: SimpleChange}){
     let log: string[] = [];
     for (let propName in changes) {
@@ -31,6 +35,7 @@ export class ArrestTableViewComponent implements OnInit, OnChanges {
     this.changeLog.push(log.join(', '));
   }
 
+  // variables that listen to see if changes are passed from dashboard component
   @Input() startDate: any;
   @Input() endDate: any;
   @Input() arrestsData: any;
@@ -38,17 +43,4 @@ export class ArrestTableViewComponent implements OnInit, OnChanges {
   @Input() lastNameFilter: any;
   @Input() offenseFilter: any;
 
-  changeLog: string[] = [];
-
-  fetchArrests(): void {
-    this.dataFetchService
-      .fetchArrests()
-      .subscribe(response => {
-        this.arrestsData = response;
-      });
-  }
-
-  showData(): void{
-    //console.log(JSON.stringify(this.arrestsData));
-  }
 }

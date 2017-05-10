@@ -9,10 +9,11 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by Dan Lesko on 4/9/2017.
  */
+
+// Class to access the database itself and make queries for Crimes
 @Repository
 public class CrimeDao {
 
-    //private static SessionFactory factory;
     private EntityManager entityManager;
 
     @PersistenceContext
@@ -20,6 +21,7 @@ public class CrimeDao {
         this.entityManager = entityManager;
     }
 
+    // query that returns all Crimes within an given time interval from database with city optional
     public List<Crime> getCrimesInInterval(String start_date, String end_date, String thecity) {
         List<Crime> crimes;
         if (thecity.toUpperCase().equals("NONE")) {
@@ -36,6 +38,7 @@ public class CrimeDao {
         return crimes;
     }
 
+    // query that returns all cities from crime, the only ones we care about
     public List<String> getCities(){
 
         List<String> city;
@@ -48,21 +51,4 @@ public class CrimeDao {
 
         return city;
     }
-
-//  public List<HistogramWrapper> getCrimesHistogram(String start_date, String end_date) {
-//    List<HistogramWrapper> crimes;
-//
-//
-//    String queryString = "SELECT DATE_FORMAT(MIN(date), '%Y-%m-%d') AS datebucket, " +
-//      "COUNT(*) AS count " +
-//      "FROM crime WHERE date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\'" +
-//      "GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)";
-//
-//    crimes = entityManager.createNativeQuery(queryString).getResultList();
-//
-//    //List<HistogramWrapper> crimes = session.createSQLQuery(queryString).list();
-//    //crimes.removeIf(Objects::isNull);
-//    //    session.close();
-//    return crimes;
-//  }
 }

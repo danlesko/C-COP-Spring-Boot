@@ -1,5 +1,5 @@
-// Based on template code
-// Data transfer implemented by Dan Lesko
+// Pie component logic
+// Implemented by Dan Lesko
 
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { SimpleChanges } from '@angular/core';
@@ -15,6 +15,7 @@ export class PieViewComponent implements OnInit, OnChanges {
 
   ngOnInit() { }
 
+  // Passes changed data to the histogram options varaibles for updating the histogram upon changes
   ngOnChanges(changes: SimpleChanges) {
     if (this.crimeData != null) {
       this.numCrimes = this.crimeData.length;
@@ -58,6 +59,7 @@ export class PieViewComponent implements OnInit, OnChanges {
     //this.histogram_ChartData = this.histogramData;
   }
 
+  // variables that listen for changes
   @Input() startDate: any;
   @Input() endDate: any;
   @Input() crimeData: any;
@@ -73,6 +75,7 @@ export class PieViewComponent implements OnInit, OnChanges {
   @Input() crimePieData: any;
   @Input() arrestPieData: any;
 
+  // logic for displaying pie charts
   pieSelection: number = 1;
 
   pieSelect(whichPie: number): void{
@@ -84,6 +87,7 @@ export class PieViewComponent implements OnInit, OnChanges {
 
   title: Array<any> = ["Description", "Count"];
 
+  // Below is instantiating default values and options for the pie charts in order to display correctly
   public pie_ChartData = [
     ['Crime vs Arrests', 'Occurrences'],
     ['Arrests',     20],

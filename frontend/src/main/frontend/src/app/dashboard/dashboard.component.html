@@ -1,6 +1,7 @@
 <!--Mostly implemented by Dan Lesko
     Some data transfer and aesthetic changes implemented by Joshua Sharo-->
 
+<!--The navigation bar, right now just displays team logo and toggles filters-->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -22,6 +23,7 @@
   </div>
 </nav>
 
+<!--This is where all of the filters / user input is for our application-->
 <div class="collapse" id="collapseFilters">
   <div class="controlContainer">
     <div class="row">
@@ -136,6 +138,8 @@
   </div>
 </div>
 
+<!--This is the display of each dashboard component, all other components are routed through here. It is also through each of the below components that data acquired
+in the dashboard component is passed to the child dashboard components-->
 <div >
   <div class="col-md-8">
     <app-map-view [crimeData]="crimeData | filter : 'incident_id' : idFilter | filter: 'agency' : agencyFilter | filter: 'narrative' : narrativeFilter | filter : 'place' : placeFilter"

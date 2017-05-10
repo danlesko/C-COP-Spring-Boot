@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
  * Created by Dan Lesko on 4/9/2017.
  * mySQL statement created by Joshua Sharo
  */
+
+// Class to access the database itself and make queries for histograms
 @Repository
 public class HistogramDao {
 
@@ -20,6 +22,7 @@ public class HistogramDao {
   }
 
 
+  // Query that grabs crime and arrest counts and puts them in a 24 bucket within an interval, city optional
   public List<HistogramWrapper> getHistogram(String start_date, String end_date, String thecity) {
     List<HistogramWrapper> histogramData;
 

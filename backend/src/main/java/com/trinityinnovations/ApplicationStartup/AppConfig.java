@@ -22,6 +22,10 @@ import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
  * Created by Dan Lesko on 4/9/2017.
  */
 
+
+// class to manage configuration for hibernate queries
+// much of this data is not necessarily original code but moreso various options that were used to create our rest API
+
 @Configuration
 @ComponentScan(basePackages = { "com.trinityinnovations.MoCoData", "com.trinityinnovations.PopulateMySQL"})
 @EnableTransactionManagement

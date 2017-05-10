@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by Dan Lesko on 4/9/2017.
  */
+
+// Rest API to get Arrest Data
 @Controller
 @RequestMapping("/ArrestsData")
 public class ArrestsController {
@@ -18,15 +20,10 @@ public class ArrestsController {
     @Autowired
     private ArrestsService arrestsService;
 
+    // GET Http method for obtaining arrest data
     @GetMapping(path = "/{start_date}/{end_date}/{city}", produces = "application/json")
     @ResponseBody
     public List<Arrests> getArrestsInInterval(@PathVariable String start_date, @PathVariable String end_date, @PathVariable String city) {
         return arrestsService.getArrestsInInterval(start_date, end_date, city);
     }
-
-//    @GetMapping(path = "/histogram/{start_date}/{end_date}", produces = "application/json")
-//    @ResponseBody
-//    public List<HistogramWrapper> getHistogram(@PathVariable String start_date, @PathVariable String end_date) {
-//      return arrestsService.getHistogram(start_date, end_date);
-//    }
 }

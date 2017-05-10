@@ -1,3 +1,7 @@
+// Created by Dan Lesko
+// Used to filter data in our frontend filters
+// This class checks to see if a passed in string matches a substring in a JSON object key
+
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
 @Pipe({
   name: 'filter'

@@ -3,6 +3,8 @@ package com.trinityinnovations.MoCoData;
 /**
  * Created by Dan Lesko on 4/30/2017.
  */
+
+// Wrapper for city
 public class City {
 
   City(){}

@@ -1,5 +1,5 @@
-// Based on template code
-// Data transfer implemented by Dan Lesko
+// Map controller logic
+// Implemented by Dan Lesko and Josh Sharo
 
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { SimpleChanges } from '@angular/core';
@@ -28,7 +28,7 @@ export class MapViewComponent implements OnInit, OnChanges {
   numArrests : any = 0; // = Object.keys(this.crimeData).length;
 
   ngOnInit() {
-    this.fetchCrime();
+    //this.fetchCrime();
 
     this.map = L.map('map',{scrollWheelZoom:true}).setView([39.154743, -77.240515], 10);
 
@@ -47,6 +47,7 @@ export class MapViewComponent implements OnInit, OnChanges {
 
   }
 
+  // variables for use by the leaflet map
   LeafIcon : any = L.Icon;
 
   redIcon = new this.LeafIcon({iconUrl: 'assets/img/red.png'});
@@ -56,7 +57,7 @@ export class MapViewComponent implements OnInit, OnChanges {
   arrestMarkerGroupLG : any;
   crimeMarkerGroupLG : any;
 
-
+  // function that listens for changes in data that will be passed to the map in the form of a marker
   ngOnChanges(changes: SimpleChanges){
     if (this.arrestMarkerGroup != null) {
       console.log("Did this fire?");
@@ -125,14 +126,7 @@ export class MapViewComponent implements OnInit, OnChanges {
 
   changeLog: string[] = [];
 
-  fetchCrime(): void {
-    this.dataFetchService
-      .fetchCrime()
-      .subscribe(response => {
-        this.crimeData = response;
-      });
-  }
-
+  // wanted to implement loading bar but never got around to it
   doneLoading : any = false;
 
   doneLoad() : void {

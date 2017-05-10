@@ -1,5 +1,5 @@
-// Based on template code
-// Data transfer implemented by Dan Lesko
+// Histogram controller logic
+// Implemented by Dan Lesko
 
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import {GoogleChart} from 'angular2-google-chart/directives/angular2-google-chart.directive';
@@ -16,11 +16,13 @@ export class HistogramViewComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
 
+  // variables that listen for changes
   @Input() startDate: any;
   @Input() endDate: any;
   @Input() histogramData: any;
   title: Array<any> = ["Date", "Arrests", "Crimes"];
 
+  // function that passes that changed histogram data to the histogram chartData variable for updating the graph
   ngOnChanges(changes: SimpleChanges){
     if(this.histogramData != null) {
       this.histogramData.unshift(this.title);
@@ -30,6 +32,7 @@ export class HistogramViewComponent implements OnInit, OnChanges {
     this.histogram_ChartData = this.histogramData;
   }
 
+  // Below is histogram code for intializing the histogram
   public histogram_ChartData = [
     ['Date', 'Arrests', 'Crimes'],
     ['Monday', 20, 80],

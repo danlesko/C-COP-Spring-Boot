@@ -1,5 +1,5 @@
-// Based on template code
-// Data transfer implemented by Dan Lesko
+// Dashboard controller logic
+// Implemented by Dan Lesko
 
 import { Component, OnInit } from '@angular/core';
 import { IMyOptions, IMyDateRangeModel } from 'mydaterangepicker';
@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
 
   constructor( private dataFetchService: DataFetchService) { }
 
+  // initialization of all variables
   beginDate: any;
   cities: any;
   endDate: any;
@@ -48,10 +49,11 @@ export class DashboardComponent implements OnInit {
 
   cityFilter: any;
 
+  // initializes the application
   ngOnInit() {
     var today = new Date()
 
-    // Default time span is 2 weeks
+    // Default time span is 2 weeks, that's what the # 14 is
     var priorDateStr = new Date().setDate(today.getDate()-14)
     this.today = today;
     var priorDate = new Date(priorDateStr);
@@ -67,6 +69,7 @@ export class DashboardComponent implements OnInit {
     this.applyGlobalFilters();
   }
 
+  // checks user input and then calls functions that fetch data for the application user our data server
   applyGlobalFilters(): void{
 
     //console.log("Is this firing?");
@@ -109,10 +112,13 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  // options for the date picker
   private myDateRangePickerOptions: IMyOptions = {
     dateFormat: 'yyyy-mm-dd',
   };
 
+  // below are functions that call upon our data fetch service in order to pass data to the dashboard view which is then distributed to other components
+  // functions should be obvious by their names in what they do
   getArrestsInInterval(): void {
     //this.priorDate.getFullYear()+'-'+(this.priorDate.getMonth()+1)+'-'+this.priorDate.getDate() + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
     let start_date = this.model.beginDate.year +'-'+ this.model.beginDate.month +'-'+ this.model.beginDate.day + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
@@ -187,17 +193,4 @@ export class DashboardComponent implements OnInit {
           //console.log(this.crimePieData);
         });
   }
-
-  // getArrestsHistogram(): void {
-  //   //this.priorDate.getFullYear()+'-'+(this.priorDate.getMonth()+1)+'-'+this.priorDate.getDate() + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
-  //   let start_date = this.model.beginDate.year +'-'+ this.model.beginDate.month +'-'+ this.model.beginDate.day + '%20' + this.startTime.getHours() + ':' + this.startTime.getMinutes();
-  //   // this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate() + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
-  //   let end_date = this.model.endDate.year +'-'+ this.model.endDate.month +'-'+ this.model.endDate.day + '%20' + this.endTime.getHours() + ':' + this.endTime.getMinutes();
-  //   this.dataFetchService
-  //     .getArrestsHistogram(start_date, end_date)
-  //     .subscribe(response => {
-  //       this.arrestsHistogramData = response;
-  //       //console.log(this.arrestsHistogramData);
-  //     });
-  // }
 }

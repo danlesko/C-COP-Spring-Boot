@@ -19,7 +19,7 @@ import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 
 /*
- * Written by Joshua Sharo
+ * Extended for CCOP by Joshua Sharo
  */
 public class HttpGet {
 

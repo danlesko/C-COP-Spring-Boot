@@ -1,4 +1,5 @@
 // Based on template code
+// Slight modification made by Dan Lesko to bounce user to ./dashboard
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

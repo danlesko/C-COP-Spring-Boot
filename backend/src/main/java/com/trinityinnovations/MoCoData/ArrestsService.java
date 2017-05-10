@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by Dan Lesko on 4/9/2017.
  */
+
+// Service to act as intermediary between controller and dao
 @Service
 public class ArrestsService {
 
@@ -19,8 +21,4 @@ public class ArrestsService {
     return arrestsDao.getArrestsInInterval(start_date, end_date, city);
   }
 
-//  @Transactional
-//  public List<HistogramWrapper> getHistogram(String start_date, String end_date) {
-//    return arrestsDao.getHistogram(start_date, end_date);
-//  }
 }

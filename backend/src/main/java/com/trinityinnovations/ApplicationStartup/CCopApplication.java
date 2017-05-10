@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Import;
 
+// template code needed to start app
 @Import(AppConfig.class)
 @SpringBootApplication(scanBasePackages={"com.trinityinnovations.ApplicationStartup", "com.trinityinnovations.MoCoData", "com.trinityinnovations.PopulateMySQL"})
 public class CCopApplication {

@@ -3,15 +3,14 @@ package com.trinityinnovations.MoCoData;
 /**
  * Created by Dan Lesko on 4/24/2017.
  */
+
+// class to act as wrapper for pie chart data
 public class PieWrapper {
 
   PieWrapper(){}
 
-
-
   private Integer count;
   private String description;
-
 
   public Integer getCount() {
     return count;

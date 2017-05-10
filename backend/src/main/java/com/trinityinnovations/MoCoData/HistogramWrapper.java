@@ -3,6 +3,8 @@ package com.trinityinnovations.MoCoData;
 /**
  * Created by Dan Lesko on 4/24/2017.
  */
+
+// Wrapper class for data we want to be returned for our histogram
 public class HistogramWrapper {
 
   HistogramWrapper(){}

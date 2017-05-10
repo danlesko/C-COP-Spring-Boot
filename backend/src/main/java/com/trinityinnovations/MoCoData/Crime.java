@@ -6,6 +6,8 @@ import javax.persistence.*;
 /**
  * Created by Dan Lesko on 4/9/2017.
  */
+
+// Class to hold all information needed needed for an Crime Object
 @Entity
 @Table(name = "crime")
 public class Crime implements Serializable {
