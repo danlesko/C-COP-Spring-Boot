@@ -77,9 +77,16 @@ export class MapViewComponent implements OnInit, OnChanges {
       let markersLG = new Array();
 
 
-      for (let crime of this.crimeData){
-        markers.push(L.marker([crime.latitude, crime.longitude], {icon: this.redIcon}).addTo(this.map).bindPopup(crime.narrative));
-        //markersLG.push(L.marker([crime.latitude, crime.longitude], {icon: this.redIcon}).addTo(this.map).bindPopup(crime.narrative));
+      if (this.numCrimes < 100) {
+        for (let crime of this.crimeData) {
+          markers.push(L.marker([crime.latitude, crime.longitude], {icon: this.redIcon}).addTo(this.map).bindPopup(crime.narrative));
+          //markersLG.push(L.marker([crime.latitude, crime.longitude], {icon: this.redIcon}).addTo(this.map).bindPopup(crime.narrative));
+        }
+      } else {
+        for (var i = 0 ; i < 100; i++) {
+          markers.push(L.marker([this.crimeData[i].latitude, this.crimeData[i].longitude], {icon: this.redIcon}).addTo(this.map).bindPopup(this.crimeData[i].narrative));
+          //markersLG.push(L.marker([crime.latitude, crime.longitude], {icon: this.redIcon}).addTo(this.map).bindPopup(crime.narrative));
+        }
       }
 
       this.crimeMarkerGroup = L.layerGroup(markers).addTo(this.map);
@@ -94,9 +101,16 @@ export class MapViewComponent implements OnInit, OnChanges {
       let markers = new Array();
       let markersLG = new Array();
 
-      for (let arrest of this.arrestsData){
-        markers.push(L.marker([arrest.latitude, arrest.longitude], {icon: this.blueIcon}).bindPopup(arrest.offense));
-        //markersLG.push(L.marker([arrest.latitude, arrest.longitude], {icon: this.blueIcon}).bindPopup(arrest.offense));
+      if (this.numArrests < 100) {
+        for (let arrest of this.arrestsData) {
+          markers.push(L.marker([arrest.latitude, arrest.longitude], {icon: this.blueIcon}).bindPopup(arrest.offense));
+          //markersLG.push(L.marker([arrest.latitude, arrest.longitude], {icon: this.blueIcon}).bindPopup(arrest.offense));
+        }
+      } else {
+        for (var i = 0 ; i < 100; i++) {
+          markers.push(L.marker([this.arrestsData[i].latitude, this.arrestsData[i].longitude], {icon: this.blueIcon}).bindPopup(this.arrestsData[i].offense));
+          //markersLG.push(L.marker([arrest.latitude, arrest.longitude], {icon: this.blueIcon}).bindPopup(arrest.offense));
+        }
       }
 
       this.arrestMarkerGroup = L.layerGroup(markers).addTo(this.map);
