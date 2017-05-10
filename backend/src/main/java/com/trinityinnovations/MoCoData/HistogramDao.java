@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Created by Dan Lesko on 4/9/2017.
+ * mySQL statement created by Joshua Sharo
  */
 @Repository
 public class HistogramDao {
@@ -21,17 +22,6 @@ public class HistogramDao {
 
   public List<HistogramWrapper> getHistogram(String start_date, String end_date, String thecity) {
     List<HistogramWrapper> histogramData;
-
-
-//    String queryString = "SELECT t1.tmstamp, t1.cnt, t2.cnt FROM " +
-//      "(SELECT DATE_FORMAT(MIN(arrest_date), '%Y/%m/%d') AS dateBucket, COUNT(*) AS arrestCount FROM arrest " +
-//      "WHERE arrest_date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\' " +
-//      "GROUP BY ROUND(UNIX_TIMESTAMP(arrest_date) / 86400)) t1 " +
-//      "LEFT JOIN " +
-//      "(SELECT DATE_FORMAT(MIN(date), '%Y/%m/%d') AS dateBucket, COUNT(*) AS crimeCount FROM crime " +
-//      "WHERE date BETWEEN \'" + start_date + "\' AND \'" + end_date + "\' " +
-//      "GROUP BY ROUND(UNIX_TIMESTAMP(date) / 86400)) t2 " +
-//      "ON t1.tmstamp = t2.tmstamp ";
 
     String queryString = "";
 

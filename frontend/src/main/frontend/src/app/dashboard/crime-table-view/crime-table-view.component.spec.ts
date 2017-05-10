@@ -1,3 +1,5 @@
+// Template code
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CrimeTableViewComponent } from './crime-table-view.component';

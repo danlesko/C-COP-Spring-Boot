@@ -1,3 +1,5 @@
+// Template code
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HistogramViewComponent } from './histogram-view.component';

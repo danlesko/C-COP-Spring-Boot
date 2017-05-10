@@ -1,3 +1,6 @@
+// Based on template code
+// Data transfer implemented by Dan Lesko
+
 import { Component, OnInit } from '@angular/core';
 import { IMyOptions, IMyDateRangeModel } from 'mydaterangepicker';
 import { DataFetchService } from '../global/data-fetch/data-fetch.service';

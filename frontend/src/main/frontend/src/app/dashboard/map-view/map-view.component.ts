@@ -1,3 +1,6 @@
+// Based on template code
+// Data transfer implemented by Dan Lesko
+
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { SimpleChanges } from '@angular/core';
 import { DataFetchService } from '../../global/data-fetch/data-fetch.service';
