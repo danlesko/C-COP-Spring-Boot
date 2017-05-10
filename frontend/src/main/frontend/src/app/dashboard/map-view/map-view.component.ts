@@ -60,22 +60,23 @@ export class MapViewComponent implements OnInit, OnChanges {
   // function that listens for changes in data that will be passed to the map in the form of a marker
   ngOnChanges(changes: SimpleChanges){
     if (this.arrestMarkerGroup != null) {
-      console.log("Did this fire?");
+      //console.log("Did this fire?");
       this.map.removeLayer(this.arrestMarkerGroup);
       //this.mapLG.removeLayer(this.arrestMarkerGroupLG);
-      this.numCrimes = this.crimeData.length;
+
     }
     if (this.crimeMarkerGroup != null) {
       this.map.removeLayer(this.crimeMarkerGroup);
       //this.mapLG.removeLayer(this.crimeMarkerGroupLG);
-      this.numArrests = this.arrestsData.length;
+
     }
 
     if (this.crimeData != null) {
+      this.numCrimes = this.crimeData.length;
       //this.numCrimes = this.crimeData.length;
 
-      console.log("The Crime Data!");
-      console.log(this.crimeData);
+      //console.log("The Crime Data!");
+      //console.log(this.crimeData);
 
       let markers = new Array();
       let markersLG = new Array();
@@ -93,17 +94,22 @@ export class MapViewComponent implements OnInit, OnChanges {
         }
       }
 
+      //console.log("Num crime markers" + markers.length);
+
       this.crimeMarkerGroup = L.layerGroup(markers).addTo(this.map);
       //this.crimeMarkerGroupLG = L.layerGroup(markersLG).addTo(this.mapLG);
 
     }
 
     if(this.arrestsData != null){
-      console.log("The Arrest Data!");
-      console.log(this.arrestsData);
+      this.numArrests = this.arrestsData.length;
+      //console.log("The Arrest Data!");
+      //console.log(this.arrestsData);
 
       let markers = new Array();
       let markersLG = new Array();
+
+      //console.log("Num arrests = " + this.numArrests);
 
       if (this.numArrests < 100) {
         for (let arrest of this.arrestsData) {
@@ -116,6 +122,9 @@ export class MapViewComponent implements OnInit, OnChanges {
           //markersLG.push(L.marker([arrest.latitude, arrest.longitude], {icon: this.blueIcon}).bindPopup(arrest.offense));
         }
       }
+
+      //console.log("Num arrest markers" + markers.length);
+
 
       this.arrestMarkerGroup = L.layerGroup(markers).addTo(this.map);
       //this.arrestMarkerGroupLG = L.layerGroup(markersLG).addTo(this.mapLG);
